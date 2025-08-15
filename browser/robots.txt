@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Sitemap: https://www.baufi-tuezuen.de/sitemap.xml
+
+User-agent: Googlebot
+Crawl-delay: 0
