@@ -1,0 +1,896 @@
+/* Updated Color Scheme - Trust & Reliability */
+        :root {
+          --primary-color: #1e40af;      /* Deep Blue */
+          --primary-light: #3b82f6;     /* Light Blue */
+          --secondary-color: #1e3a8a;   /* Navy Blue */
+          --accent-color: #64748b;      /* Slate Gray */
+          --success-color: #059669;     /* Emerald Green */
+          --text-dark: #1a1a1a;
+          --text-light: #4a5568;
+          --background-light: #f8fafc;
+          --white: #ffffff;
+        }
+
+        .hero-section {
+          min-height: calc(100vh - 120px);
+          position: relative;
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+        }
+
+        /* Hintergrundbild mit Overlay */
+        .hero-background {
+          position: absolute;
+          top: 0;
+          right: 0;
+            width: 100%;
+            height: 100%;
+          background-image: url('/homebg.jpg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          z-index: 1;
+        }
+
+        /* Dunkler Overlay für bessere Lesbarkeit */
+        .hero-background::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(0, 0, 0, 0.6) 50%,
+            rgba(0, 0, 0, 0.3) 100%
+          );
+        }
+
+        .container {
+          max-width: 1280px;
+          margin: 0 auto;
+          padding: 0 24px;
+          position: relative;
+          z-index: 1;
+        }
+
+        .hero-content {
+          display: flex;
+          justify-content: flex-start;
+        }
+
+        /* Box für den Text-Content */
+        .hero-text-box {
+          background: rgba(255, 254, 254, 0.95);
+          backdrop-filter: blur(10px);
+          padding: 60px;
+          border-radius: 20px;
+          max-width: 600px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-title {
+          font-size: clamp(2.5rem, 5vw, 3.5rem);
+          font-weight: 700;
+          color: #000000;
+          line-height: 1.2;
+          margin-bottom: 40px;
+          letter-spacing: -1px;
+        }
+
+        .hero-features {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          margin-bottom: 40px;
+        }
+
+        .feature-item {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          color: #000000;
+          font-size: 17px;
+          font-weight: 400;
+        }
+
+        .check-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px;
+          height: 30px;
+          background-color: #059669;
+          color: #fff;
+          border-radius: 50%;
+          font-weight: bold;
+          font-size: 16px;
+          flex-shrink: 0;
+          box-shadow: 0 3px 8px rgba(5, 150, 105, 0.3);
+        }
+
+        .hero-cta {
+          background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+          color: #fff;
+          padding: 16px 36px;
+          border: none;
+          border-radius: 30px;
+          font-size: 16px;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
+          text-decoration: none;
+          display: inline-block;
+        }
+
+        .hero-cta:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 30px rgba(30, 64, 175, 0.4);
+          background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        }
+
+        /* Services Section */
+        .services-section {
+          padding: 80px 0;
+          background-color: #f8f9fa;
+          position: relative;
+          overflow: hidden;
+        }
+
+        /* Geometrisches Hintergrundmuster */
+        .services-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-image: 
+            linear-gradient(30deg, transparent 49%, rgba(30, 64, 175, 0.03) 49%, rgba(30, 64, 175, 0.03) 51%, transparent 51%),
+            linear-gradient(-30deg, transparent 49%, rgba(30, 64, 175, 0.03) 49%, rgba(30, 64, 175, 0.03) 51%, transparent 51%);
+          background-size: 30px 52px;
+          opacity: 0.5;
+        }
+
+        .section-title {
+          text-align: center;
+          font-size: clamp(2rem, 4vw, 3rem);
+          color: #1a1a1a;
+          margin-bottom: 60px;
+          font-weight: 400;
+        }
+
+        .section-title strong {
+          font-weight: 700;
+          color: #1a1a1a;
+        }
+
+        /* Hexagon Grid */
+        .hexagon-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 30px;
+          max-width: 1000px;
+          margin: 0 auto 50px;
+          position: relative;
+          z-index: 1;
+        }
+
+        .hexagon-item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        /* Hexagon Shape */
+        .hexagon {
+          width: 180px;
+          height: 200px;
+          position: relative;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+        }
+
+        /* Verbesserte Hexagon Styles */
+        .hexagon-content {
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+          clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          text-align: center;
+          padding: 20px;
+          position: relative;
+          transition: all 0.3s ease;
+        }
+
+        /* 3D-Effekt für Hexagons */
+        .hexagon-content::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 60%);
+          clip-path: inherit;
+          pointer-events: none;
+        }
+
+        .hexagon:hover {
+          transform: translateY(-10px);
+        }
+
+        .hexagon:hover::after {
+          transform: translateY(15px) scale(0.95);
+          filter: blur(20px);
+        }
+
+        /* SVG Icon Styles */
+        .hexagon-icon {
+          width: 48px;
+          height: 48px;
+          margin-bottom: 15px;
+          stroke: white;
+          fill: none;
+          stroke-width: 2;
+        }
+
+        /* Spezielle Icon-Anpassungen */
+        .hexagon-icon text {
+          fill: white;
+          stroke: none;
+        }
+
+        .hexagon h3 {
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 1.3;
+          margin: 0;
+        }
+
+        .services-description {
+          text-align: center;
+          font-size: 18px;
+          color: #4a4a4a;
+          max-width: 800px;
+          margin: 0 auto;
+          line-height: 1.8;
+        }
+
+        .services-description strong {
+          color: #1a1a1a;
+          font-weight: 600;
+        }
+
+        /* Steps Section */
+        .steps-section {
+          padding: 80px 0;
+          background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+          position: relative;
+          overflow: hidden;
+        }
+
+        /* Geometrisches Muster im Hintergrund */
+        .steps-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-image: 
+            linear-gradient(60deg, transparent 49%, rgba(255,255,255,0.05) 49%, rgba(255,255,255,0.05) 51%, transparent 51%),
+            linear-gradient(-60deg, transparent 49%, rgba(255,255,255,0.05) 49%, rgba(255,255,255,0.05) 51%, transparent 51%);
+          background-size: 40px 70px;
+        }
+
+        .steps-title {
+          text-align: center;
+          font-size: clamp(2rem, 4vw, 3rem);
+          color: #fff;
+          margin-bottom: 60px;
+          font-weight: 400;
+          position: relative;
+          z-index: 1;
+        }
+
+        .steps-title strong {
+          font-weight: 700;
+        }
+
+        /* Steps Container */
+        .steps-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+          margin-bottom: 60px;
+          position: relative;
+          z-index: 1;
+          flex-wrap: wrap;
+          max-width: 1200px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .step-item {
+          position: relative;
+        }
+
+        /* Verbindungspfeile zwischen Hexagons */
+        .step-item:not(:last-child)::after {
+          content: '▶';
+          position: absolute;
+          right: -25px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: rgba(255,255,255,0.5);
+          font-size: 20px;
+          z-index: 0;
+        }
+
+        /* White Hexagons */
+        .step-hexagon {
+          width: 160px;
+          height: 180px;
+          position: relative;
+          transition: transform 0.3s ease;
+        }
+
+        .step-content {
+          width: 100%;
+          height: 100%;
+          background: #fff;
+          clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 20px;
+          position: relative;
+          transition: all 0.3s ease;
+        }
+
+        /* Glanz-Effekt für Steps */
+        .step-content::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(30, 64, 175, 0.05) 0%, transparent 60%);
+          clip-path: inherit;
+          pointer-events: none;
+        }
+
+        .step-hexagon:hover {
+          transform: translateY(-5px);
+        }
+
+        .step-hexagon:hover::after {
+          transform: translateY(10px) scale(0.98);
+          filter: blur(15px);
+        }
+
+        /* Step SVG Icons */
+        .step-icon {
+          width: 40px;
+          height: 40px;
+          margin-bottom: 10px;
+          stroke: #1e40af;
+          fill: none;
+          stroke-width: 2;
+        }
+
+        .step-content h3 {
+          font-size: 16px;
+          font-weight: 700;
+          color: #1e40af;
+          margin: 0 0 5px 0;
+        }
+
+        .step-content p {
+          font-size: 14px;
+          color: #666;
+          margin: 0;
+          line-height: 1.3;
+        }
+
+        /* CTA Button */
+        .steps-cta-wrapper {
+          text-align: center;
+          position: relative;
+          z-index: 1;
+        }
+
+        .steps-cta {
+          background: #fff;
+          color: #1e40af;
+          padding: 16px 36px;
+          border: none;
+          border-radius: 30px;
+          font-size: 16px;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+          text-decoration: none;
+          display: inline-block;
+        }
+
+        .steps-cta:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 30px rgba(0,0,0,0.3);
+        }
+
+        .steps-cta-subtitle {
+          color: #fff;
+          font-size: 14px;
+          margin-top: 15px;
+          font-weight: 500;
+          letter-spacing: 1px;
+        }
+
+        /* Mobile Responsive für Hero Section */
+        @media (max-width: 968px) {
+          .hero-text-box {
+            padding: 40px;
+            max-width: 100%;
+          }
+          
+          /* FIXED: Services Hexagons - 2x2 Grid */
+          .hexagon-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            max-width: 400px;
+            padding: 0 20px;
+          }
+          
+          .hexagon {
+            width: 150px;
+            height: 170px;
+          }
+          
+          .hexagon-icon {
+            width: 40px;
+            height: 40px;
+          }
+          
+          /* FIXED: Steps - Bessere Anordnung */
+          .steps-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px 40px;
+            max-width: 400px;
+            justify-items: center;
+          }
+          
+          /* Schritt 5 zentral in der dritten Zeile */
+          .step-item:nth-child(5) {
+            grid-column: 1 / -1;
+            justify-self: center;
+          }
+          
+          /* Pfeile in Mobile ausblenden */
+          .step-item:not(:last-child)::after {
+            display: none;
+          }
+          
+          .step-hexagon {
+            width: 140px;
+            height: 160px;
+          }
+          
+          .step-icon {
+            width: 35px;
+            height: 35px;
+          }
+          
+          .step-content h3 {
+            font-size: 14px;
+          }
+          
+          .step-content p {
+            font-size: 12px;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .hero-section {
+            min-height: 500px;
+            padding: 40px 0;
+          }
+          
+          .hero-text-box {
+            padding: 30px;
+            /* FIXED: Box bleibt weiß statt dunkel zu werden */
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            /* Zusätzlicher Schatten für bessere Sichtbarkeit */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+          }
+          
+          .hero-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            /* Text bleibt dunkel für gute Lesbarkeit */
+            color: #000000;
+          }
+          
+          .feature-item {
+            font-size: 16px;
+            /* Text bleibt dunkel für gute Lesbarkeit */
+            color: #000000;
+          }
+          
+          .check-icon {
+            width: 26px;
+            height: 26px;
+            font-size: 14px;
+          }
+          
+          .hero-cta {
+            width: 100%;
+            text-align: center;
+          }
+          
+          /* IMPROVED: Services Hexagons - kleinere Größe */
+          .hexagon-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 350px;
+            padding: 0 20px;
+          }
+          
+          .hexagon {
+            width: 130px;
+            height: 150px;
+          }
+          
+          .hexagon-content {
+            padding: 15px;
+          }
+          
+          .hexagon-icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 8px;
+          }
+          
+          .hexagon h3 {
+            font-size: 14px;
+            line-height: 1.2;
+          }
+          
+          /* IMPROVED: Steps - 2-2-1 Layout */
+          .steps-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            max-width: 350px;
+            row-gap: 30px;
+          }
+          
+          .step-item:nth-child(5) {
+            grid-column: 1 / -1;
+            justify-self: center;
+          }
+          
+          .step-hexagon {
+            width: 130px;
+            height: 150px;
+          }
+          
+          .step-content {
+            padding: 15px;
+          }
+          
+          .step-icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 8px;
+          }
+          
+          .step-content h3 {
+            font-size: 13px;
+          }
+          
+          .step-content p {
+            font-size: 11px;
+          }
+          
+          .services-description {
+            font-size: 16px;
+            padding: 0 20px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-text-box {
+            padding: 25px;
+            border-radius: 15px;
+            /* Weiterhin weiß bleiben */
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+          }
+          
+          .hero-title {
+            font-size: 1.75rem;
+            color: #000000;
+          }
+          
+          .hero-features {
+            gap: 16px;
+          }
+          
+          .feature-item {
+            color: #000000;
+          }
+          
+          .hero-cta {
+            padding: 14px 28px;
+            font-size: 15px;
+          }
+          
+          .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            padding: 0 20px;
+          }
+          
+          /* IMPROVED: Services Hexagons - noch kleinere Größe */
+          .hexagon-grid {
+            gap: 30px;
+            max-width: 280px;
+          }
+          
+          .hexagon {
+            width: 110px;
+            height: 125px;
+          }
+          
+          .hexagon-icon {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 6px;
+          }
+          
+          .hexagon h3 {
+            font-size: 12px;
+            line-height: 1.1;
+          }
+          
+          .services-section {
+            padding: 40px 0;
+          }
+          
+          .services-description {
+            font-size: 15px;
+            margin-top: 30px;
+          }
+          
+          /* IMPROVED: Steps Section */
+          .steps-section {
+            padding: 60px 0;
+          }
+          
+          .steps-title {
+            font-size: 1.75rem;
+            margin-bottom: 40px;
+          }
+          
+          .steps-container {
+            gap: 20px;
+            max-width: 280px;
+            row-gap: 25px;
+          }
+          
+          .step-hexagon {
+            width: 110px;
+            height: 125px;
+          }
+          
+          .step-icon {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 6px;
+          }
+          
+          .step-content h3 {
+            font-size: 11px;
+          }
+          
+          .step-content p {
+            font-size: 10px;
+          }
+          
+          .steps-cta {
+            width: 90%;
+            font-size: 14px;
+            padding: 14px 20px;
+          }
+}
+
+/* SEO Content Section - passend zum Design der anderen Sections */
+.seo-content-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dezenter Hintergrund-Pattern */
+.seo-content-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 100px,
+      rgba(30, 64, 175, 0.02) 100px,
+      rgba(30, 64, 175, 0.02) 200px
+    );
+  pointer-events: none;
+}
+
+.seo-content-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Hauptüberschrift */
+.seo-content-section h2 {
+  color: #1e40af;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+/* Unterstrrich-Effekt für H2 */
+.seo-content-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b35, #ff8c42);
+  border-radius: 2px;
+}
+
+/* Paragraphen Styling */
+.seo-content-section p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #4a5568;
+  margin-bottom: 20px;
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Erste Paragraph - etwas größer */
+.seo-content-section p:first-of-type {
+  font-size: 1.2rem;
+  color: #2d3748;
+  margin-bottom: 25px;
+}
+
+/* Letzter Paragraph - Kontaktinfos */
+.seo-content-section p:last-child {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  border-left: 4px solid #ff6b35;
+  text-align: left;
+  font-size: 1rem;
+  margin-top: 35px;
+}
+
+/* Strong Tags hervorheben */
+.seo-content-section strong {
+  color: #1e40af;
+  font-weight: 600;
+}
+
+/* Hover-Effekt für Keywords */
+.seo-content-section strong:hover {
+  color: #ff6b35;
+  transition: color 0.3s ease;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .seo-content-section {
+    padding: 60px 15px;
+  }
+  
+  .seo-content-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .seo-content-section p {
+    font-size: 1rem;
+    text-align: left;
+  }
+  
+  .seo-content-section p:first-of-type {
+    font-size: 1.1rem;
+  }
+  
+  .seo-content-section p:last-child {
+    padding: 20px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Kleine Animation beim Scrollen (optional) */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.seo-content-section h2,
+.seo-content-section p {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+/* Zusätzliche Box-Variante (falls du die Section erweitern willst) */
+.seo-content-section .info-box {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.seo-content-section .info-box-item {
+  text-align: center;
+}
+
+.seo-content-section .info-box-item h3 {
+  color: #ff6b35;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.seo-content-section .info-box-item p {
+  font-size: 0.95rem;
+  margin: 0;
+}

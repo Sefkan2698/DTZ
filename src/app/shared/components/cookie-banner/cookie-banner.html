@@ -1,0 +1,241 @@
+<div class="cookie-banner" *ngIf="showBanner" [@slideUp]>
+  <div class="cookie-container">
+    <div class="cookie-content">
+      
+      <!-- Cookie Icon und Titel -->
+      <div class="cookie-header">
+        <div class="cookie-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path>
+            <path d="M8.5 8.5v.01"></path>
+            <path d="M16 15.5v.01"></path>
+            <path d="M12 12v.01"></path>
+            <path d="M11 17v.01"></path>
+            <path d="M7 14v.01"></path>
+          </svg>
+        </div>
+        <div class="cookie-title-section">
+          <h3>Ihre Privatsphäre ist uns wichtig</h3>
+          <p class="cookie-subtitle">Wir verwenden Cookies für eine optimale Website-Erfahrung</p>
+        </div>
+      </div>
+
+      <!-- Haupttext - Kompakte Ansicht -->
+      <div class="cookie-description" *ngIf="!showDetails">
+        <p>
+          Wir nutzen Cookies und ähnliche Technologien, um Ihnen die bestmögliche Erfahrung auf unserer Website zu bieten. 
+          Einige Cookies sind notwendig, damit unsere Website funktioniert. Andere helfen uns, Ihre Erfahrung zu verbessern 
+          und unsere Dienstleistungen zu optimieren.
+        </p>
+      </div>
+
+      <!-- Quick Actions - Kompakte Ansicht -->
+      <div class="cookie-actions-main" *ngIf="!showDetails">
+        <button class="btn btn-ghost" (click)="toggleDetails()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M1.54 12l6 .01m6 5.99l4.24 4.24M12 13l-6-.01m6-5.99L7.76 2.76"></path>
+          </svg>
+          Einstellungen anpassen
+        </button>
+        <button class="btn btn-secondary" (click)="rejectAll()">
+          Nur notwendige
+        </button>
+        <button class="btn btn-primary" (click)="acceptAll()">
+          Alle akzeptieren
+        </button>
+      </div>
+
+      <!-- Detaillierte Einstellungen -->
+      <div class="cookie-details" *ngIf="showDetails" [@fadeIn]>
+        
+        <!-- Beschreibung -->
+        <div class="details-description">
+          <p>
+            Hier können Sie Ihre Cookie-Einstellungen verwalten. Wir unterscheiden zwischen notwendigen Cookies, 
+            die für den Betrieb der Website erforderlich sind, und optionalen Cookies, die uns helfen, 
+            unsere Website und Ihr Nutzererlebnis zu verbessern.
+          </p>
+        </div>
+
+        <!-- Cookie Kategorien -->
+        <div class="cookie-categories">
+          
+          <!-- Notwendige Cookies -->
+          <div class="cookie-category necessary">
+            <div class="category-header">
+              <label class="category-label">
+                <input type="checkbox" 
+                       [checked]="cookieSettings.necessary" 
+                       disabled
+                       class="category-checkbox">
+                <span class="checkbox-custom"></span>
+                <div class="category-info">
+                  <strong>Notwendige Cookies</strong>
+                  <span class="badge badge-required">Immer aktiv</span>
+                </div>
+              </label>
+              <button class="info-toggle" (click)="toggleCategoryInfo('necessary')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline [attr.points]="categoryInfo.necessary ? '18 15 12 9 6 15' : '6 9 12 15 18 9'"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="category-description" *ngIf="categoryInfo.necessary" [@expandCollapse]>
+              <p>
+                Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden. 
+                Sie werden normalerweise als Reaktion auf Ihre Aktionen gesetzt, wie z.B. das Festlegen von Datenschutzeinstellungen, 
+                das Anmelden oder das Ausfüllen von Formularen.
+              </p>
+              <div class="cookie-list">
+                <div class="cookie-item">
+                  <span class="cookie-name">cookie-consent</span>
+                  <span class="cookie-duration">1 Jahr</span>
+                </div>
+                <div class="cookie-item">
+                  <span class="cookie-name">session-id</span>
+                  <span class="cookie-duration">Sitzung</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Analyse Cookies -->
+          <div class="cookie-category">
+            <div class="category-header">
+              <label class="category-label">
+                <input type="checkbox" 
+                       [(ngModel)]="cookieSettings.analytics"
+                       class="category-checkbox">
+                <span class="checkbox-custom"></span>
+                <div class="category-info">
+                  <strong>Analyse & Statistik</strong>
+                  <span class="badge badge-optional">Optional</span>
+                </div>
+              </label>
+              <button class="info-toggle" (click)="toggleCategoryInfo('analytics')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline [attr.points]="categoryInfo.analytics ? '18 15 12 9 6 15' : '6 9 12 15 18 9'"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="category-description" *ngIf="categoryInfo.analytics" [@expandCollapse]>
+              <p>
+                Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren. 
+                Die Informationen werden anonym gesammelt und analysiert, um unsere Website zu verbessern.
+              </p>
+              <div class="cookie-list">
+                <div class="cookie-item">
+                  <span class="cookie-name">_ga (Google Analytics)</span>
+                  <span class="cookie-duration">2 Jahre</span>
+                </div>
+                <div class="cookie-item">
+                  <span class="cookie-name">_gid (Google Analytics)</span>
+                  <span class="cookie-duration">24 Stunden</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Marketing Cookies -->
+          <div class="cookie-category">
+            <div class="category-header">
+              <label class="category-label">
+                <input type="checkbox" 
+                       [(ngModel)]="cookieSettings.marketing"
+                       class="category-checkbox">
+                <span class="checkbox-custom"></span>
+                <div class="category-info">
+                  <strong>Marketing & Personalisierung</strong>
+                  <span class="badge badge-optional">Optional</span>
+                </div>
+              </label>
+              <button class="info-toggle" (click)="toggleCategoryInfo('marketing')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline [attr.points]="categoryInfo.marketing ? '18 15 12 9 6 15' : '6 9 12 15 18 9'"></polyline>
+                </svg>
+              </button>
+            </div>
+            <div class="category-description" *ngIf="categoryInfo.marketing" [@expandCollapse]>
+              <p>
+                Diese Cookies werden verwendet, um Werbung zu liefern, die für Sie relevanter ist. 
+                Sie können auch verwendet werden, um die Anzahl der Anzeigenaufrufe zu begrenzen und 
+                die Effektivität von Werbekampagnen zu messen.
+              </p>
+              <div class="cookie-list">
+                <div class="cookie-item">
+                  <span class="cookie-name">_fbp (Facebook Pixel)</span>
+                  <span class="cookie-duration">3 Monate</span>
+                </div>
+                <div class="cookie-item">
+                  <span class="cookie-name">ads/ga-audiences (Google Ads)</span>
+                  <span class="cookie-duration">Sitzung</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Detail Actions -->
+        <div class="cookie-actions-detail">
+          <button class="btn btn-ghost" (click)="toggleDetails()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Zurück
+          </button>
+          <div class="action-group">
+            <button class="btn btn-secondary" (click)="rejectAll()">
+              Nur notwendige
+            </button>
+            <button class="btn btn-primary" (click)="acceptSelected()">
+              Auswahl speichern
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="cookie-footer">
+        <a routerLink="/datenschutz" class="footer-link" (click)="hideForLink()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          Datenschutzerklärung
+        </a>
+        <span class="separator">•</span>
+        <a routerLink="/impressum" class="footer-link" (click)="hideForLink()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          Impressum
+        </a>
+        <span class="separator">•</span>
+        <button class="footer-link" (click)="showCookieSettings()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M1.54 12l6 .01m6 5.99l4.24 4.24M12 13l-6-.01m6-5.99L7.76 2.76"></path>
+          </svg>
+          Cookie-Einstellungen
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Floating Cookie Settings Button (wenn Banner geschlossen) -->
+<button class="cookie-settings-fab" 
+        *ngIf="!showBanner && hasConsent" 
+        (click)="showCookieSettings()"
+        title="Cookie-Einstellungen">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"></path>
+    <path d="M8.5 8.5v.01"></path>
+    <path d="M16 15.5v.01"></path>
+    <path d="M12 12v.01"></path>
+  </svg>
+</button>

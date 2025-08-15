@@ -1,0 +1,218 @@
+<section class="kontakt-hero">
+  <div class="hero-background"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text-box">
+        <h1 class="hero-title">Kontakt</h1>
+        <p class="hero-subtitle">
+          Nehmen Sie Kontakt mit uns auf - wir beraten Sie gerne kostenlos und unverbindlich.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-form-section">
+  <div class="container">
+    <div class="contact-wrapper">
+
+      <!-- Formular oder Erfolgsnachricht -->
+      <div class="form-container">
+        <!-- Formular anzeigen, wenn noch nicht gesendet -->
+        <div *ngIf="!isSubmitted">
+          <div class="form-header">
+            <h2>Kostenlose Beratung anfragen</h2>
+            <p>Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+          </div>
+
+          <form class="contact-form" (ngSubmit)="submitForm()" #contactForm="ngForm">
+
+            <!-- Anrede -->
+            <div class="form-group">
+              <label for="anrede">Anrede *</label>
+              <select id="anrede" name="anrede" required class="form-input"
+                      [(ngModel)]="formData.anrede"
+                      [class.error]="anredeError">
+                <option value="">Bitte wählen</option>
+                <option value="herr">Herr</option>
+                <option value="frau">Frau</option>
+                <option value="divers">Divers</option>
+              </select>
+              <span class="error-message" *ngIf="anredeError">{{ anredeError }}</span>
+            </div>
+
+            <!-- Vor- und Nachname -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="vorname">Vorname *</label>
+                <input type="text" id="vorname" name="vorname" required
+                       placeholder="Ihr Vorname" class="form-input"
+                       [(ngModel)]="formData.vorname"
+                       [class.error]="vornameError">
+                <span class="error-message" *ngIf="vornameError">{{ vornameError }}</span>
+              </div>
+
+              <div class="form-group">
+                <label for="nachname">Nachname *</label>
+                <input type="text" id="nachname" name="nachname" required
+                       placeholder="Ihr Nachname" class="form-input"
+                       [(ngModel)]="formData.nachname"
+                       [class.error]="nachnameError">
+                <span class="error-message" *ngIf="nachnameError">{{ nachnameError }}</span>
+              </div>
+            </div>
+
+            <!-- E-Mail -->
+            <div class="form-group">
+              <label for="email">E-Mail-Adresse *</label>
+              <input type="email" id="email" name="email" required
+                     placeholder="ihre.email@beispiel.de" class="form-input"
+                     [(ngModel)]="formData.email"
+                     [class.error]="emailError"
+                     (input)="onEmailChange()" 
+                     (blur)="onEmailBlur()">
+              <span class="error-message" *ngIf="emailError">{{ emailError }}</span>
+            </div>
+
+            <!-- Telefon -->
+            <div class="form-group">
+              <label for="telefon">Telefonnummer (optional)</label>
+              <input type="tel" id="telefon" name="telefon"
+                     placeholder="Ihre Telefonnummer" class="form-input"
+                     [(ngModel)]="formData.telefon">
+            </div>
+
+            <!-- Anliegen -->
+            <div class="form-group">
+              <label for="anliegen">Anliegen *</label>
+              <select id="anliegen" name="anliegen" required class="form-input"
+                      [(ngModel)]="formData.anliegen"
+                      [class.error]="anliegenError">
+                <option value="">Bitte wählen Sie Ihr Anliegen</option>
+                <option value="baufinanzierung">Baufinanzierung</option>
+                <option value="ratenkredit">Ratenkredit</option>
+                <option value="anderes">Anderes</option>
+              </select>
+              <span class="error-message" *ngIf="anliegenError">{{ anliegenError }}</span>
+            </div>
+
+            <!-- Nachricht -->
+            <div class="form-group">
+              <label for="nachricht">Ihre Nachricht *</label>
+              <textarea id="nachricht" name="nachricht" required rows="5"
+                        placeholder="Beschreiben Sie uns Ihr Anliegen..."
+                        class="form-input textarea"
+                        [(ngModel)]="formData.nachricht"
+                        [class.error]="nachrichtError"></textarea>
+              <span class="error-message" *ngIf="nachrichtError">{{ nachrichtError }}</span>
+            </div>
+
+            <!-- Datenschutz -->
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" name="datenschutz" required class="checkbox-input"
+                       [(ngModel)]="formData.datenschutz">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-text">
+                  Ich stimme der <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> zu
+                  und bin damit einverstanden, dass meine Daten zur Bearbeitung meiner Anfrage gespeichert werden. *
+                </span>
+              </label>
+              <span class="error-message" *ngIf="datenschutzError">{{ datenschutzError }}</span>
+            </div>
+
+            <!-- Fehlermeldung gesamt -->
+            <div class="alert error-alert" *ngIf="submitError">
+              <div class="alert-icon">⚠️</div>
+              <div class="alert-content">
+                <strong>Fehler beim Senden</strong>
+                <p>{{ submitError }}</p>
+              </div>
+              <button type="button" class="alert-close" (click)="clearError()">×</button>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" class="submit-button" [disabled]="isSubmitting">
+              <span *ngIf="!isSubmitting">Anfrage senden</span>
+              <span *ngIf="isSubmitting" class="button-loading">
+                <span class="spinner"></span>
+                Wird gesendet...
+              </span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Erfolgsnachricht -->
+        <div *ngIf="isSubmitted" class="message success-message">
+          <div class="message-icon success-icon">✓</div>
+          <h3>Vielen Dank für Ihre Anfrage!</h3>
+          <p>Wir haben Ihre Nachricht erhalten und werden uns innerhalb von 24 Stunden bei Ihnen melden.</p>
+          <p class="success-info">Eine Bestätigungs-E-Mail wurde an <strong>{{ formData.email }}</strong> gesendet.</p>
+          <button class="new-request-btn" (click)="resetForm()">Neue Anfrage stellen</button>
+        </div>
+      </div>
+
+      <!-- Kontaktinformationen mit modernen Icons -->
+      <div class="contact-info">
+        <h3>Kontaktinformationen</h3>
+        
+        <!-- E-Mail -->
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-10 5L2 7"></path>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <strong>E-Mail</strong>
+            <p>info@baufi-tuezuen.de</p>
+          </div>
+        </div>
+
+        <!-- Telefon -->
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <strong>Telefon</strong>
+            <p>+49 152 52031092</p>
+          </div>
+        </div>
+
+        <!-- Adresse -->
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <strong>Adresse</strong>
+            <p>Neuenkamp 16<br>29229 Celle</p>
+          </div>
+        </div>
+
+        <!-- Geschäftszeiten -->
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <div class="contact-details">
+            <strong>Geschäftszeiten</strong>
+            <p>Mo-Fr: 9:00 - 18:00 Uhr<br>Sa: 10:00 - 14:00 Uhr</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

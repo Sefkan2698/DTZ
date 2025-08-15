@@ -1,0 +1,139 @@
+<title>Baufinanzierung Celle - Immobiliendarlehen | Deniz Tüzün Finanzberatung</title>
+<meta name="description" content="Baufinanzierung mit Top-Konditionen. ✓ Über 400 Banken ✓ Zinsbindung bis 40 Jahre ✓ Kostenlose Beratung ✓ Bundesweit. Jetzt Angebot anfordern!">
+
+<section class="baufi-hero">
+  <div class="hero-background"></div>
+  <div class="hero-pattern"></div>
+  
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">Baufinanzierungen</h1>
+      <p class="hero-subtitle">
+        Maßgeschneiderte Finanzierungslösungen für Ihr<br>
+        Kauf-, Bau- oder Modernisierungsvorhaben
+      </p>
+      <button class="hero-cta" routerLink="/contact">
+        JETZT BAUFINANZIERUNG ANFRAGEN
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Nach der Hero Section -->
+<section class="services-overview">
+  <div class="container">
+    <div class="services-grid">
+      <!-- Baufinanzierungen Box -->
+      <article class="service-card dark-card">
+        <div class="card-content">
+          <h3>Baufinanzierungen</h3>
+          <ul class="service-features">
+            <li>
+              <span class="arrow">▶</span>
+              <span>Über {{numberOfBanks}} Banken im Vergleich</span>
+            </li>
+            <li>
+              <span class="arrow">▶</span>
+              <span>Zinsbindung bis zu 40 Jahre</span>
+            </li>
+            <li>
+              <span class="arrow">▶</span>
+              <span>Top Konditionen</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-decoration">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon points="0,100 50,80 100,100" fill="rgba(255,255,255,0.1)"/>
+          </svg>
+        </div>
+      </article>
+
+      <!-- Konsumentenkredite Box -->
+      <article class="service-card orange-card">
+        <div class="card-content">
+          <h3>Konsumentenkredite</h3>
+          <ul class="service-features">
+            <li>
+              <span class="arrow">▶</span>
+              <span>Über 60 Banken im Vergleich</span>
+            </li>
+            <li>
+              <span class="arrow">▶</span>
+              <span>Individuelle Beratung</span>
+            </li>
+            <li>
+              <span class="arrow">▶</span>
+              <span>Ausgezeichnete Konditionen</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-decoration">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon points="0,100 50,85 100,100" fill="rgba(255,255,255,0.15)"/>
+          </svg>
+        </div>
+      </article>
+
+      <!-- Absicherung Box -->
+      <article class="service-card light-card">
+        <div class="card-content">
+          <h3>Absicherung der Immobilie</h3>
+          <ul class="service-features">
+            <li>
+              <span class="arrow">▶</span>
+              <span>Persönliche Absicherung der Kreditnehmer</span>
+            </li>
+            <li>
+              <span class="arrow">▶</span>
+              <span>Versicherungsschutz für die Immobilie z.B. Gebäudeversicherung</span>
+            </li>
+            <li>
+              <span class="arrow">▶</span>
+              <span>Schutz der Familie bei Kreditausfall</span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-decoration">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polygon points="0,100 30,90 70,85 100,100" fill="rgba(200,200,200,0.1)"/>
+          </svg>
+        </div>
+      </article>
+    </div>
+
+    <div class="cta-wrapper">
+      <button class="services-cta" routerLink="/contact">
+        JETZT BAUFINANZIERUNG ANFRAGEN
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Nach der services-overview Section -->
+<section class="faq-section">
+  <div class="container">
+    <h2 class="faq-title">Antworten auf wichtige Fragen</h2>
+    
+    <div class="faq-container">
+      <div class="faq-item" *ngFor="let faq of faqs; let i = index" 
+           [class.active]="faq.isOpen">
+        <button class="faq-question" (click)="toggleFaq(i)">
+          <span>{{ faq.question }}</span>
+          <span class="faq-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" 
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+        
+        <div class="faq-answer" [style.maxHeight]="faq.isOpen ? '500px' : '0'">
+          <div class="faq-answer-content">
+            {{ faq.answer }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

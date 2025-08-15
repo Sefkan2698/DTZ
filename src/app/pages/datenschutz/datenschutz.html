@@ -1,0 +1,766 @@
+<!-- Hero Section -->
+<section class="datenschutz-hero">
+  <div class="hero-background"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text-box">
+        <h1 class="hero-title">Datenschutzerklärung</h1>
+        <p class="hero-subtitle">
+          Transparenz und Schutz Ihrer persönlichen Daten
+        </p>
+        <p class="last-updated">Stand: {{ lastUpdated }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="datenschutz-content">
+  <div class="container">
+    <div class="content-wrapper">
+      
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <div class="sidebar-sticky">
+          <h3>Inhaltsverzeichnis</h3>
+          <nav class="toc-nav">
+            <ul>
+              <li *ngFor="let section of sections" 
+                  [class.active]="activeSection === section.id">
+                <a (click)="scrollToSection(section.id)">
+                  {{ section.title }}
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div class="sidebar-actions">
+            <button class="btn-print" (click)="printDocument()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              Drucken
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Article -->
+      <article class="privacy-content">
+        
+        <!-- Einleitung -->
+        <div class="intro-section">
+          <p class="lead">
+            Mit dieser Datenschutzerklärung möchten wir Sie über Art, Umfang und Zweck der Verarbeitung von 
+            personenbezogenen Daten (im Folgenden auch nur als "Daten" bezeichnet) aufklären. Personenbezogene 
+            Daten sind alle Daten, die einen persönlichen Bezug zu Ihnen aufweisen, z. B. Name, Adresse, 
+            E-Mail-Adresse oder Ihr Nutzerverhalten.
+          </p>
+        </div>
+
+        <!-- Section 1: Verantwortlicher -->
+        <section id="verantwortlicher" class="content-section">
+          <h2>1. Verantwortlicher</h2>
+          <div class="info-card">
+            <p>
+              <strong>{{ companyData.name }}</strong><br>
+              {{ companyData.title }}<br><br>
+              {{ companyData.street }}<br>
+              {{ companyData.zipCode }} {{ companyData.city }}<br><br>
+              <strong>E-Mail:</strong> <a href="mailto:{{ companyData.email }}">{{ companyData.email }}</a><br>
+              <strong>Telefon:</strong> <a href="tel:{{ companyData.phone }}">{{ companyData.phone }}</a><br>
+              <strong>Website:</strong> <a href="{{ companyData.website }}" target="_blank">{{ companyData.website }}</a>
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 2: Übersicht -->
+        <section id="uebersicht" class="content-section">
+          <h2>2. Übersicht der Verarbeitungen</h2>
+          <p>
+            Die nachfolgende Übersicht fasst die Arten der verarbeiteten Daten und die Zwecke ihrer 
+            Verarbeitung zusammen und verweist auf die betroffenen Personen.
+          </p>
+          
+          <h3>Arten der verarbeiteten Daten</h3>
+          <ul class="data-list">
+            <li>Bestandsdaten (z. B. der vollständige Name, Wohnadresse, Kontaktinformationen)</li>
+            <li>Inhaltsdaten (z. B. Texteingaben, Fotografien, Videos)</li>
+            <li>Kontaktdaten (z. B. E-Mail-Adressen, Telefonnummern)</li>
+            <li>Meta-/Kommunikationsdaten (z. B. Geräte-Informationen, IP-Adressen)</li>
+            <li>Nutzungsdaten (z. B. besuchte Webseiten, Interesse an Inhalten, Zugriffszeiten)</li>
+            <li>Vertragsdaten (z. B. Vertragsgegenstand, Laufzeit, Kundenkategorie)</li>
+            <li>Zahlungsdaten (z. B. Bankverbindungen, Rechnungen, Zahlungshistorie)</li>
+          </ul>
+
+          <h3>Kategorien betroffener Personen</h3>
+          <ul class="data-list">
+            <li>Geschäfts- und Vertragspartner</li>
+            <li>Interessenten</li>
+            <li>Kommunikationspartner</li>
+            <li>Kunden</li>
+            <li>Nutzer (z. B. Webseitenbesucher, Nutzer von Onlinediensten)</li>
+          </ul>
+
+          <h3>Zwecke der Verarbeitung</h3>
+          <ul class="data-list">
+            <li>Bereitstellung unseres Onlineangebotes und Nutzerfreundlichkeit</li>
+            <li>Büro- und Organisationsverfahren</li>
+            <li>Direktmarketing (z. B. per E-Mail oder postalisch)</li>
+            <li>Kontaktanfragen und Kommunikation</li>
+            <li>Reichweitenmessung (z. B. Zugriffsstatistiken, Erkennung wiederkehrender Besucher)</li>
+            <li>Sicherheitsmaßnahmen</li>
+            <li>Tracking (z. B. interessens-/verhaltensbezogenes Profiling, Nutzung von Cookies)</li>
+            <li>Erbringung vertraglicher Leistungen und Kundenservice</li>
+            <li>Verwaltung und Beantwortung von Anfragen</li>
+          </ul>
+        </section>
+
+        <!-- Section 3: Rechtsgrundlagen -->
+        <section id="rechtsgrundlagen" class="content-section">
+          <h2>3. Maßgebliche Rechtsgrundlagen</h2>
+          <div class="info-box">
+            <p>
+              <strong>Rechtsgrundlagen nach der DSGVO:</strong> Im Folgenden erhalten Sie eine Übersicht 
+              der Rechtsgrundlagen der DSGVO, auf deren Basis wir personenbezogene Daten verarbeiten. 
+              Bitte nehmen Sie zur Kenntnis, dass neben den Regelungen der DSGVO nationale Datenschutzvorgaben 
+              in Ihrem bzw. unserem Wohn- oder Sitzland gelten können.
+            </p>
+          </div>
+
+          <ul class="legal-list">
+            <li>
+              <strong>Einwilligung (Art. 6 Abs. 1 S. 1 lit. a) DSGVO)</strong> - Die betroffene Person 
+              hat ihre Einwilligung in die Verarbeitung der sie betreffenden personenbezogenen Daten für 
+              einen spezifischen Zweck oder mehrere bestimmte Zwecke gegeben.
+            </li>
+            <li>
+              <strong>Vertragserfüllung und vorvertragliche Anfragen (Art. 6 Abs. 1 S. 1 lit. b) DSGVO)</strong> - 
+              Die Verarbeitung ist für die Erfüllung eines Vertrags, dessen Vertragspartei die betroffene 
+              Person ist, oder zur Durchführung vorvertraglicher Maßnahmen erforderlich, die auf Anfrage 
+              der betroffenen Person erfolgen.
+            </li>
+            <li>
+              <strong>Rechtliche Verpflichtung (Art. 6 Abs. 1 S. 1 lit. c) DSGVO)</strong> - Die 
+              Verarbeitung ist zur Erfüllung einer rechtlichen Verpflichtung erforderlich, der der 
+              Verantwortliche unterliegt.
+            </li>
+            <li>
+              <strong>Berechtigte Interessen (Art. 6 Abs. 1 S. 1 lit. f) DSGVO)</strong> - die Verarbeitung 
+              ist zur Wahrung der berechtigten Interessen des Verantwortlichen oder eines Dritten notwendig, 
+              vorausgesetzt, dass die Interessen, Grundrechte und Grundfreiheiten der betroffenen Person, 
+              die den Schutz personenbezogener Daten verlangen, nicht überwiegen.
+            </li>
+          </ul>
+
+          <p class="mt-4">
+            <strong>Nationale Datenschutzregelungen in Deutschland:</strong> Zusätzlich zu den 
+            Datenschutzregelungen der DSGVO gelten nationale Regelungen zum Datenschutz in Deutschland. 
+            Hierzu gehört insbesondere das Gesetz zum Schutz vor Missbrauch personenbezogener Daten bei 
+            der Datenverarbeitung (Bundesdatenschutzgesetz – BDSG).
+          </p>
+        </section>
+
+        <!-- Section 4: Sicherheitsmaßnahmen -->
+        <section id="sicherheit" class="content-section">
+          <h2>4. Sicherheitsmaßnahmen</h2>
+          <p>
+            Wir treffen nach Maßgabe der gesetzlichen Vorgaben unter Berücksichtigung des Stands der 
+            Technik, der Implementierungskosten und der Art, des Umfangs, der Umstände und der Zwecke 
+            der Verarbeitung sowie der unterschiedlichen Eintrittswahrscheinlichkeiten und des Ausmaßes 
+            der Bedrohung der Rechte und Freiheiten natürlicher Personen geeignete technische und 
+            organisatorische Maßnahmen, um ein dem Risiko angemessenes Schutzniveau zu gewährleisten.
+          </p>
+          
+          <div class="security-measures">
+            <h3>Unsere Sicherheitsmaßnahmen umfassen insbesondere:</h3>
+            <ul>
+              <li>SSL/TLS-Verschlüsselung für die Datenübertragung</li>
+              <li>Regelmäßige Software-Updates und Sicherheitspatches</li>
+              <li>Zugriffskontrolle und Authentifizierung</li>
+              <li>Regelmäßige Datensicherungen</li>
+              <li>Firewall-Schutz</li>
+              <li>Verschlüsselte Speicherung sensibler Daten</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 5: Datenarten -->
+        <section id="datenarten" class="content-section">
+          <h2>5. Verarbeitete Datenarten im Detail</h2>
+          
+          <div class="data-category">
+            <h3>Bestandsdaten</h3>
+            <p>
+              Bestandsdaten umfassen grundlegende Informationen, die zur Identifizierung und Verwaltung 
+              von Kunden oder Interessenten erforderlich sind. Dazu gehören:
+            </p>
+            <ul>
+              <li>Vor- und Nachname</li>
+              <li>Anschrift</li>
+              <li>Geburtsdatum</li>
+              <li>Kundennummer</li>
+            </ul>
+          </div>
+
+          <div class="data-category">
+            <h3>Kontaktdaten</h3>
+            <p>
+              Kontaktdaten ermöglichen die Kommunikation mit Ihnen:
+            </p>
+            <ul>
+              <li>E-Mail-Adresse</li>
+              <li>Telefonnummer</li>
+              <li>Faxnummer</li>
+              <li>Messenger-Dienste</li>
+            </ul>
+          </div>
+
+          <div class="data-category">
+            <h3>Vertragsdaten</h3>
+            <p>
+              Bei der Anbahnung und Durchführung von Verträgen verarbeiten wir:
+            </p>
+            <ul>
+              <li>Vertragsgegenstand</li>
+              <li>Laufzeiten</li>
+              <li>Vergütung</li>
+              <li>Zahlungsbedingungen</li>
+              <li>Bonitätsinformationen</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 6: Betroffene Personen -->
+        <section id="betroffene" class="content-section">
+          <h2>6. Kategorien betroffener Personen</h2>
+          <p>
+            Von der Datenverarbeitung sind folgende Personengruppen betroffen:
+          </p>
+          
+          <div class="person-categories">
+            <div class="category-card">
+              <h3>Kunden</h3>
+              <p>Personen, die unsere Dienstleistungen in Anspruch nehmen oder genommen haben.</p>
+            </div>
+            
+            <div class="category-card">
+              <h3>Interessenten</h3>
+              <p>Personen, die Interesse an unseren Dienstleistungen bekundet haben.</p>
+            </div>
+            
+            <div class="category-card">
+              <h3>Geschäftspartner</h3>
+              <p>Kooperationspartner, Lieferanten und andere Geschäftskontakte.</p>
+            </div>
+            
+            <div class="category-card">
+              <h3>Webseitenbesucher</h3>
+              <p>Personen, die unsere Website besuchen und nutzen.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 7: Zwecke -->
+        <section id="zwecke" class="content-section">
+          <h2>7. Zwecke der Verarbeitung</h2>
+          <p>
+            Wir verarbeiten Ihre personenbezogenen Daten zu folgenden Zwecken:
+          </p>
+          
+          <div class="purposes-grid">
+            <div class="purpose-item">
+              <div class="purpose-icon">📋</div>
+              <h3>Vertragserfüllung</h3>
+              <p>Durchführung von Verträgen und Erbringung unserer Dienstleistungen im Bereich 
+                 Immobilienfinanzierung und Darlehensberatung.</p>
+            </div>
+            
+            <div class="purpose-item">
+              <div class="purpose-icon">💬</div>
+              <h3>Kommunikation</h3>
+              <p>Beantwortung von Anfragen, Kundenservice und Beratungsgespräche.</p>
+            </div>
+            
+            <div class="purpose-item">
+              <div class="purpose-icon">📊</div>
+              <h3>Analyse & Optimierung</h3>
+              <p>Verbesserung unserer Website und Dienstleistungen basierend auf Nutzungsanalysen.</p>
+            </div>
+            
+            <div class="purpose-item">
+              <div class="purpose-icon">🔒</div>
+              <h3>Sicherheit</h3>
+              <p>Gewährleistung der IT-Sicherheit und Schutz vor Missbrauch.</p>
+            </div>
+            
+            <div class="purpose-item">
+              <div class="purpose-icon">⚖️</div>
+              <h3>Rechtliche Pflichten</h3>
+              <p>Erfüllung gesetzlicher Aufbewahrungspflichten und regulatorischer Anforderungen.</p>
+            </div>
+            
+            <div class="purpose-item">
+              <div class="purpose-icon">📧</div>
+              <h3>Marketing</h3>
+              <p>Information über neue Angebote und Dienstleistungen (mit Ihrer Einwilligung).</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 8: Empfänger -->
+        <section id="empfaenger" class="content-section">
+          <h2>8. Empfänger personenbezogener Daten</h2>
+          <p>
+            Im Rahmen unserer Geschäftstätigkeit arbeiten wir mit verschiedenen externen Stellen zusammen. 
+            Dabei ist teilweise auch eine Übermittlung Ihrer personenbezogenen Daten erforderlich:
+          </p>
+          
+          <div class="recipients-list">
+            <div class="recipient-category">
+              <h3>Finanzdienstleister</h3>
+              <ul>
+                <li>Banken und Kreditinstitute</li>
+                <li>Versicherungsgesellschaften</li>
+                <li>Bausparkassen</li>
+                <li>Finanzierungsvermittler</li>
+              </ul>
+            </div>
+            
+            <div class="recipient-category">
+              <h3>Dienstleister</h3>
+              <ul>
+                <li>IT-Dienstleister und Hosting-Anbieter</li>
+                <li>Steuerberater und Wirtschaftsprüfer</li>
+                <li>Rechtsanwälte</li>
+                <li>Marketingagenturen</li>
+              </ul>
+            </div>
+            
+            <div class="recipient-category">
+              <h3>Behörden</h3>
+              <ul>
+                <li>Finanzbehörden</li>
+                <li>Aufsichtsbehörden</li>
+                <li>Strafverfolgungsbehörden (bei gesetzlicher Verpflichtung)</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 9: Hosting -->
+        <section id="hosting" class="content-section">
+          <h2>9. Hosting und Content-Delivery</h2>
+          <div class="hosting-info">
+            <h3>Externes Hosting</h3>
+            <p>
+              Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die personenbezogenen 
+              Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. 
+              Hierbei kann es sich v. a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, 
+              Vertragsdaten, Kontaktdaten, Namen, Websitezugriffe und sonstige Daten, die über eine 
+              Website generiert werden, handeln.
+            </p>
+            
+            <div class="provider-info">
+              <h4>Hosting-Anbieter:</h4>
+              <p>
+                <strong>IONOS SE</strong><br>
+                Elgendorfer Str. 57<br>
+                56410 Montabaur<br>
+                Deutschland<br><br>
+                Website: <a href="https://www.ionos.de" target="_blank" rel="noopener">www.ionos.de</a>
+              </p>
+            </div>
+            
+            <p>
+              Der Einsatz des Hosters erfolgt zum Zwecke der Vertragserfüllung gegenüber unseren 
+              potenziellen und bestehenden Kunden (Art. 6 Abs. 1 lit. b DSGVO) und im Interesse einer 
+              sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen 
+              professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO).
+            </p>
+            
+            <h4>Auftragsverarbeitung</h4>
+            <p>
+              Wir haben mit unserem Hoster einen Vertrag zur Auftragsverarbeitung (AVV) abgeschlossen. 
+              Hierbei handelt es sich um einen datenschutzrechtlich vorgeschriebenen Vertrag, der 
+              gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach 
+              unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 10: Kontakt -->
+        <section id="kontakt" class="content-section">
+          <h2>10. Kontaktaufnahme</h2>
+          <p>
+            Bei der Kontaktaufnahme mit uns (z. B. per Kontaktformular, E-Mail, Telefon oder via 
+            sozialer Medien) werden die Angaben der anfragenden Personen verarbeitet, soweit dies zur 
+            Beantwortung der Kontaktanfragen und etwaiger angefragter Maßnahmen erforderlich ist.
+          </p>
+          
+          <div class="contact-processing">
+            <h3>Kontaktformular</h3>
+            <p>
+              Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem 
+              Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung 
+              der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben 
+              wir nicht ohne Ihre Einwilligung weiter.
+            </p>
+            
+            <h3>E-Mail-Kontakt</h3>
+            <p>
+              Wenn Sie uns per E-Mail kontaktieren, werden Ihre Daten ebenfalls zur Bearbeitung Ihrer 
+              Anfrage gespeichert. Bitte beachten Sie, dass die Datenübertragung im Internet 
+              (z. B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser 
+              Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.
+            </p>
+            
+            <h3>Telefonische Kontaktaufnahme</h3>
+            <p>
+              Bei telefonischer Kontaktaufnahme werden keine personenbezogenen Daten automatisch 
+              gespeichert, es sei denn, diese werden im Rahmen der Beratung zur Bearbeitung Ihres 
+              Anliegens benötigt und von Ihnen mitgeteilt.
+            </p>
+            
+            <div class="info-box">
+              <p>
+                <strong>Rechtsgrundlage:</strong> Die Verarbeitung erfolgt auf Grundlage unseres 
+                berechtigten Interesses an der Beantwortung von Anfragen (Art. 6 Abs. 1 lit. f DSGVO) 
+                bzw. auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), sofern diese 
+                abgefragt wurde, oder zur Durchführung vorvertraglicher Maßnahmen (Art. 6 Abs. 1 lit. b DSGVO).
+              </p>
+            </div>
+            
+            <h3>Speicherdauer</h3>
+            <p>
+              Die von Ihnen an uns per Kontaktanfragen übersandten Daten verbleiben bei uns, bis Sie 
+              uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck 
+              für die Datenspeicherung entfällt (z. B. nach abgeschlossener Bearbeitung Ihres Anliegens). 
+              Zwingende gesetzliche Bestimmungen – insbesondere gesetzliche Aufbewahrungsfristen – 
+              bleiben unberührt.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 11: Webanalyse -->
+        <section id="webanalyse" class="content-section">
+          <h2>11. Webanalyse und Optimierung</h2>
+          <p>
+            Die Webanalyse dient der Auswertung des Besucherverhaltens auf unserer Website. Hierbei 
+            werden Daten erhoben, die der jeweilige Anbieter (Analysetool) erhebt, verarbeitet und 
+            speichert. Mit ihrer Hilfe werden Analysen über das Nutzerverhalten auf unserer Website erstellt.
+          </p>
+          
+          <div class="analytics-info">
+            <h3>Server-Log-Dateien</h3>
+            <p>
+              Der Provider unserer Website erhebt und speichert automatisch Informationen in so genannten 
+              Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:
+            </p>
+            <ul>
+              <li>Browsertyp und Browserversion</li>
+              <li>Verwendetes Betriebssystem</li>
+              <li>Referrer URL</li>
+              <li>Hostname des zugreifenden Rechners</li>
+              <li>Uhrzeit der Serveranfrage</li>
+              <li>IP-Adresse</li>
+            </ul>
+            <p>
+              Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die 
+              Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der 
+              Websitebetreiber hat ein berechtigtes Interesse an der technisch fehlerfreien Darstellung 
+              und der Optimierung seiner Website – hierzu müssen die Server-Log-Files erfasst werden.
+            </p>
+          </div>
+        </section>
+
+        <!-- Section 12: Cookies -->
+        <section id="cookies" class="content-section">
+          <h2>12. Cookies</h2>
+          <div class="cookies-info">
+            <h3>Was sind Cookies?</h3>
+            <p>
+              Unsere Website verwendet so genannte Cookies. Cookies sind kleine Textdateien, die auf 
+              Ihrem Rechner abgelegt werden und die Ihr Browser speichert. Cookies richten auf Ihrem 
+              Rechner keinen Schaden an und enthalten keine Viren.
+            </p>
+            
+            <h3>Arten von Cookies</h3>
+            <div class="cookie-types">
+              <div class="cookie-type">
+                <h4>Technisch notwendige Cookies</h4>
+                <p>
+                  Diese Cookies sind erforderlich, damit Sie durch die Seiten navigieren und wesentliche 
+                  Funktionen nutzen können. Sie ermöglichen Grundfunktionen wie Seitennavigation und 
+                  Zugriff auf sichere Bereiche der Website.
+                </p>
+              </div>
+              
+              <div class="cookie-type">
+                <h4>Funktionale Cookies</h4>
+                <p>
+                  Diese Cookies ermöglichen es der Website, bereits getätigte Angaben (wie zum Beispiel 
+                  Benutzernamen, Sprachauswahl oder der Ort, an dem Sie sich befinden) zu speichern und 
+                  Ihnen verbesserte, persönlichere Funktionen anzubieten.
+                </p>
+              </div>
+              
+              <div class="cookie-type">
+                <h4>Analyse-Cookies</h4>
+                <p>
+                  Diese Cookies sammeln Informationen darüber, wie Besucher unsere Website nutzen, 
+                  beispielsweise welche Seiten am häufigsten besucht werden. Diese Cookies speichern 
+                  keine Informationen, die eine direkte Identifikation einer Person erlauben.
+                </p>
+              </div>
+            </div>
+            
+            <h3>Cookie-Verwaltung</h3>
+            <p>
+              Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert 
+              werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle 
+              oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des 
+              Browsers aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser 
+              Website eingeschränkt sein.
+            </p>
+            
+            <div class="browser-settings">
+              <h4>Cookie-Einstellungen in gängigen Browsern:</h4>
+              <ul>
+                <li><strong>Chrome:</strong> Einstellungen → Erweitert → Datenschutz und Sicherheit → Website-Einstellungen → Cookies</li>
+                <li><strong>Firefox:</strong> Einstellungen → Datenschutz & Sicherheit → Cookies und Website-Daten</li>
+                <li><strong>Safari:</strong> Einstellungen → Datenschutz → Cookies und Website-Daten</li>
+                <li><strong>Edge:</strong> Einstellungen → Datenschutz, Suche und Dienste → Cookies und Websiteberechtigungen</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 13: Rechte -->
+        <section id="rechte" class="content-section">
+          <h2>13. Rechte der betroffenen Personen</h2>
+          <p class="lead">
+            Als betroffene Person haben Sie umfangreiche Rechte bezüglich der Verarbeitung Ihrer 
+            personenbezogenen Daten. Diese Rechte können Sie jederzeit unentgeltlich ausüben.
+          </p>
+          
+          <div class="rights-grid">
+            <div class="right-card">
+              <div class="right-icon">ℹ️</div>
+              <h3>Auskunftsrecht</h3>
+              <p>
+                Sie haben das Recht, eine Bestätigung darüber zu verlangen, ob Sie betreffende 
+                personenbezogene Daten verarbeitet werden. Ist dies der Fall, haben Sie ein Recht 
+                auf Auskunft über diese personenbezogenen Daten und die in Art. 15 DSGVO im 
+                Einzelnen aufgeführten Informationen.
+              </p>
+            </div>
+            
+            <div class="right-card">
+              <div class="right-icon">✏️</div>
+              <h3>Recht auf Berichtigung</h3>
+              <p>
+                Sie haben das Recht, unverzüglich die Berichtigung Sie betreffender unrichtiger 
+                personenbezogener Daten zu verlangen. Unter Berücksichtigung der Zwecke der 
+                Verarbeitung haben Sie das Recht, die Vervollständigung unvollständiger 
+                personenbezogener Daten zu verlangen (Art. 16 DSGVO).
+              </p>
+            </div>
+            
+            <div class="right-card">
+              <div class="right-icon">🗑️</div>
+              <h3>Recht auf Löschung</h3>
+              <p>
+                Sie haben das Recht, zu verlangen, dass Sie betreffende personenbezogene Daten 
+                unverzüglich gelöscht werden, sofern einer der in Art. 17 DSGVO im Einzelnen 
+                aufgeführten Gründe zutrifft, z. B. wenn die Daten für die verfolgten Zwecke 
+                nicht mehr benötigt werden.
+              </p>
+            </div>
+            
+            <div class="right-card">
+              <div class="right-icon">⏸️</div>
+              <h3>Recht auf Einschränkung</h3>
+              <p>
+                Sie haben das Recht, die Einschränkung der Verarbeitung zu verlangen, wenn eine 
+                der in Art. 18 DSGVO aufgeführten Voraussetzungen gegeben ist, z. B. wenn Sie 
+                Widerspruch gegen die Verarbeitung eingelegt haben, für die Dauer der Prüfung 
+                durch den Verantwortlichen.
+              </p>
+            </div>
+            
+            <div class="right-card">
+              <div class="right-icon">📤</div>
+              <h3>Recht auf Datenübertragbarkeit</h3>
+              <p>
+                Sie haben das Recht, die Sie betreffenden personenbezogenen Daten in einem 
+                strukturierten, gängigen und maschinenlesbaren Format zu erhalten. Sie haben 
+                außerdem das Recht, diese Daten einem anderen Verantwortlichen zu übermitteln 
+                (Art. 20 DSGVO).
+              </p>
+            </div>
+            
+            <div class="right-card">
+              <div class="right-icon">🚫</div>
+              <h3>Widerspruchsrecht</h3>
+              <p>
+                Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, 
+                jederzeit gegen die Verarbeitung Sie betreffender personenbezogener Daten Widerspruch 
+                einzulegen. Der Verantwortliche verarbeitet die personenbezogenen Daten dann nicht 
+                mehr (Art. 21 DSGVO).
+              </p>
+            </div>
+            
+            <div class="right-card">
+              <div class="right-icon">↩️</div>
+              <h3>Recht auf Widerruf</h3>
+              <p>
+                Soweit die Verarbeitung auf Ihrer Einwilligung beruht, haben Sie das Recht, diese 
+                jederzeit zu widerrufen, ohne dass die Rechtmäßigkeit der aufgrund der Einwilligung 
+                bis zum Widerruf erfolgten Verarbeitung berührt wird.
+              </p>
+            </div>
+            
+            <div class="right-card">
+              <div class="right-icon">⚖️</div>
+              <h3>Beschwerderecht</h3>
+              <p>
+                Sie haben das Recht, sich bei einer Aufsichtsbehörde zu beschweren, wenn Sie der 
+                Ansicht sind, dass die Verarbeitung der Sie betreffenden personenbezogenen Daten 
+                gegen die DSGVO verstößt (Art. 77 DSGVO).
+              </p>
+            </div>
+          </div>
+          
+          <div class="contact-rights">
+            <h3>Kontaktaufnahme zur Ausübung Ihrer Rechte</h3>
+            <p>
+              Zur Ausübung Ihrer Rechte können Sie sich jederzeit an uns wenden:
+            </p>
+            <div class="contact-box">
+              <p>
+                <strong>E-Mail:</strong> <a href="mailto:{{ companyData.email }}">{{ companyData.email }}</a><br>
+                <strong>Telefon:</strong> <a href="tel:{{ companyData.phone }}">{{ companyData.phone }}</a><br>
+                <strong>Postalisch:</strong> {{ companyData.name }}, {{ companyData.street }}, 
+                {{ companyData.zipCode }} {{ companyData.city }}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 14: Begriffsdefinitionen -->
+        <section id="begriffe" class="content-section">
+          <h2>14. Begriffsdefinitionen</h2>
+          <p>
+            In dieser Datenschutzerklärung werden Begriffe verwendet, die durch den Europäischen 
+            Richtlinien- und Verordnungsgeber beim Erlass der Datenschutz-Grundverordnung (DSGVO) 
+            verwendet wurden. Für ein besseres Verständnis erläutern wir diese Begriffe:
+          </p>
+          
+          <dl class="definitions-list">
+            <dt>Personenbezogene Daten</dt>
+            <dd>
+              Alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche 
+              Person beziehen. Als identifizierbar wird eine natürliche Person angesehen, die direkt 
+              oder indirekt identifiziert werden kann.
+            </dd>
+            
+            <dt>Betroffene Person</dt>
+            <dd>
+              Jede identifizierte oder identifizierbare natürliche Person, deren personenbezogene 
+              Daten von dem für die Verarbeitung Verantwortlichen verarbeitet werden.
+            </dd>
+            
+            <dt>Verarbeitung</dt>
+            <dd>
+              Jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführte Vorgang im Zusammenhang 
+              mit personenbezogenen Daten wie das Erheben, das Erfassen, die Organisation, das Ordnen, 
+              die Speicherung, die Anpassung oder Veränderung.
+            </dd>
+            
+            <dt>Einschränkung der Verarbeitung</dt>
+            <dd>
+              Die Markierung gespeicherter personenbezogener Daten mit dem Ziel, ihre künftige 
+              Verarbeitung einzuschränken.
+            </dd>
+            
+            <dt>Profiling</dt>
+            <dd>
+              Jede Art der automatisierten Verarbeitung personenbezogener Daten, die darin besteht, 
+              dass diese personenbezogenen Daten verwendet werden, um bestimmte persönliche Aspekte 
+              zu bewerten.
+            </dd>
+            
+            <dt>Pseudonymisierung</dt>
+            <dd>
+              Die Verarbeitung personenbezogener Daten in einer Weise, dass die personenbezogenen 
+              Daten ohne Hinzuziehung zusätzlicher Informationen nicht mehr einer spezifischen 
+              betroffenen Person zugeordnet werden können.
+            </dd>
+            
+            <dt>Verantwortlicher</dt>
+            <dd>
+              Die natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, die 
+              allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von 
+              personenbezogenen Daten entscheidet.
+            </dd>
+            
+            <dt>Auftragsverarbeiter</dt>
+            <dd>
+              Eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, die 
+              personenbezogene Daten im Auftrag des Verantwortlichen verarbeitet.
+            </dd>
+            
+            <dt>Empfänger</dt>
+            <dd>
+              Eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, denen 
+              personenbezogene Daten offengelegt werden, unabhängig davon, ob es sich bei ihr um einen 
+              Dritten handelt oder nicht.
+            </dd>
+            
+            <dt>Dritter</dt>
+            <dd>
+              Eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle außer 
+              der betroffenen Person, dem Verantwortlichen, dem Auftragsverarbeiter und den Personen, 
+              die unter der unmittelbaren Verantwortung des Verantwortlichen oder des Auftragsverarbeiters 
+              befugt sind, die personenbezogenen Daten zu verarbeiten.
+            </dd>
+            
+            <dt>Einwilligung</dt>
+            <dd>
+              Jede von der betroffenen Person freiwillig für den bestimmten Fall in informierter Weise 
+              und unmissverständlich abgegebene Willensbekundung in Form einer Erklärung oder einer 
+              sonstigen eindeutigen bestätigenden Handlung.
+            </dd>
+          </dl>
+        </section>
+
+        <!-- Schlussbemerkung -->
+        <section class="content-section">
+          <div class="final-note">
+            <h2>Aktualität und Änderungen dieser Datenschutzerklärung</h2>
+            <p>
+              Diese Datenschutzerklärung ist aktuell gültig und hat den Stand {{ lastUpdated }}.
+            </p>
+            <p>
+              Durch die Weiterentwicklung unserer Website und Angebote darüber oder aufgrund geänderter 
+              gesetzlicher beziehungsweise behördlicher Vorgaben kann es notwendig werden, diese 
+              Datenschutzerklärung zu ändern. Die jeweils aktuelle Datenschutzerklärung kann jederzeit 
+              auf der Website unter <a href="/datenschutz">www.baufi-tuezuen.de/datenschutz</a> von 
+              Ihnen abgerufen und ausgedruckt werden.
+            </p>
+          </div>
+        </section>
+
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Scroll to Top Button -->
+<button class="scroll-top-btn" (click)="scrollToTop()" [class.visible]="activeSection !== ''">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
