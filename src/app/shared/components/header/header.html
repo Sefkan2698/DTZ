@@ -57,6 +57,20 @@
               Ratenkredit
             </a>
           </li>
+                    <li class="nav-item">
+            <a routerLink="/bausparvertrag" 
+               routerLinkActive="active"
+               class="nav-link">
+              Bausparvertrag
+            </a>
+          </li>
+              <li class="nav-item">
+            <a routerLink="/tippgeber" 
+               routerLinkActive="active"
+               class="nav-link">
+              Tippgeber
+            </a>
+          </li>
           <li class="nav-item nav-cta">
             <a routerLink="/contact" 
                class="cta-button">
@@ -131,6 +145,28 @@
          (click)="closeMenu()"
          class="mobile-nav-link">
         <span>Ratenkredit</span>
+        <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </a>
+    </li>
+        <li class="mobile-nav-item">
+      <a routerLink="/bausparvertrag" 
+         routerLinkActive="active"
+         (click)="closeMenu()"
+         class="mobile-nav-link">
+        <span>Bausparvertrag</span>
+        <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </a>
+    </li>
+        <li class="mobile-nav-item">
+      <a routerLink="/tippgeber" 
+         routerLinkActive="active"
+         (click)="closeMenu()"
+         class="mobile-nav-link">
+        <span>Tippgeber</span>
         <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M9 18l6-6-6-6"/>
         </svg>

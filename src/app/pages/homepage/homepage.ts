@@ -31,7 +31,7 @@ export class Homepage implements OnInit, OnDestroy {
     
     this.meta.updateTag({ 
       name: 'keywords', 
-      content: 'Deniz Tüzün, Deniz Tuezuen, Baufinanzierung, Immobiliendarlehen, Ratenkredite, Finanzberatung, Finanzierung Celle, Darlehensvermittler' 
+      content: 'Deniz Tüzün, Deniz Tuezuen, Baufinanzierung, Immobiliardarlehen, Ratenkredite, Finanzberatung, Finanzierung Celle, Darlehensvermittler' 
     });
 
     this.meta.updateTag({ 
@@ -66,7 +66,7 @@ export class Homepage implements OnInit, OnDestroy {
       "@type": "FinancialService",
       "name": "Deniz Tüzün Finanzberatung",
       "alternateName": ["DTZ Finanzberatung", "Baufi Tüzün"],
-      "description": "Unabhängige Finanzberatung für Baufinanzierung, Immobiliendarlehen und Ratenkredite",
+      "description": "Unabhängige Finanzberatung für Baufinanzierung und Ratenkredite",
       "url": "https://www.baufi-tuezuen.de",
       "logo": "https://www.baufi-tuezuen.de/assets/logo.png",
       "image": "https://www.baufi-tuezuen.de/assets/office.jpg",
@@ -125,8 +125,8 @@ export class Homepage implements OnInit, OnDestroy {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Immobiliendarlehen",
-              "description": "Individuelle Immobilienfinanzierung mit Top-Konditionen"
+              "name": "Immobiliardarlehen",
+              "description": "Individuelle Immobiliarfinanzierung mit Top-Konditionen"
             }
           }
         ]

@@ -1,0 +1,679 @@
+/* Bausparvertrag Hero Section */
+.bauspar-hero {
+  min-height: calc(100vh - 120px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+/* Hintergrundbild */
+.hero-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/bausparvertrag2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* Overlay für besseren Kontrast */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    transparent 100%
+  );
+  z-index: 2;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 3;
+}
+
+/* Weißer Kasten für Hero-Content */
+.hero-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  max-width: 600px;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  text-align: center;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  color: #4a4a4a;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.hero-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.feature-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: #059669;
+  border-radius: 50%;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  flex-shrink: 0;
+  margin-top: 2px;
+  box-shadow: 0 3px 8px rgba(5, 150, 105, 0.3);
+}
+
+.feature-check span:last-child {
+  color: #4a4a4a;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.hero-cta {
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  color: #fff;
+  padding: 16px 36px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(30, 64, 175, 0.3);
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(30, 64, 175, 0.4);
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+}
+
+/* Info Section */
+.bauspar-info-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  position: relative;
+}
+
+.bauspar-info-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(30deg, transparent 49%, rgba(30, 64, 175, 0.02) 49%, rgba(30, 64, 175, 0.02) 51%, transparent 51%),
+    linear-gradient(-30deg, transparent 49%, rgba(30, 64, 175, 0.02) 49%, rgba(30, 64, 175, 0.02) 51%, transparent 51%);
+  background-size: 40px 70px;
+  opacity: 0.5;
+}
+
+.info-intro {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.info-intro h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 25px;
+}
+
+.intro-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #4a5568;
+}
+
+/* Funktionsweise Section */
+.funktionsweise-section {
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.funktionsweise-section h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.section-description {
+  font-size: 18px;
+  color: #4a5568;
+  text-align: center;
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Phasen Container */
+.phasen-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.phase-item {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(30, 64, 175, 0.1);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.phase-item:hover {
+  border-color: #1e40af;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(30, 64, 175, 0.15);
+}
+
+.phase-number {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+}
+
+.phase-content h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+.phase-content p {
+  font-size: 16px;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.phase-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.phase-benefits li {
+  padding: 8px 0;
+  color: #059669;
+  font-size: 15px;
+  font-weight: 500;
+  position: relative;
+  padding-left: 25px;
+}
+
+.phase-benefits li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #059669;
+  font-weight: bold;
+}
+
+/* Vorteile Section */
+.vorteile-section {
+  max-width: 1100px;
+  margin: 0 auto 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.vorteile-section h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.vorteile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.vorteil-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(30, 64, 175, 0.08);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.vorteil-card:hover {
+  border-color: #1e40af;
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(30, 64, 175, 0.12);
+}
+
+.vorteil-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: all 0.3s ease;
+}
+
+.vorteil-icon svg {
+  width: 30px;
+  height: 30px;
+  stroke: white;
+}
+
+.vorteil-card:hover .vorteil-icon {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+}
+
+.vorteil-card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 15px;
+}
+
+.vorteil-card p {
+  font-size: 15px;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+/* Partner Section */
+.partner-section {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.partner-section h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 25px;
+}
+
+.partner-description {
+  font-size: 18px;
+  color: #4a5568;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.partner-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.partner-item {
+  background: white;
+  border-radius: 12px;
+  padding: 25px 20px;
+  box-shadow: 0 6px 20px rgba(30, 64, 175, 0.08);
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.partner-item:hover {
+  border-color: #1e40af;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(30, 64, 175, 0.12);
+}
+
+.partner-logo {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.partner-item span {
+  font-size: 14px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+/* CTA Section */
+.cta-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+  text-align: center;
+  color: white;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  font-size: 20px;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  background: white;
+  color: #1e40af;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+  background: #f8fafc;
+}
+
+/* Mobile Responsive */
+@media (max-width: 968px) {
+  .hero-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    max-width: 100%;
+  }
+  
+  .phasen-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .vorteile-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .partner-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bauspar-hero {
+    min-height: 500px;
+  }
+  
+  .hero-content {
+    text-align: center;
+    padding: 30px;
+    margin: 0 auto;
+  }
+  
+  .hero-features {
+    gap: 18px;
+    text-align: left;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .info-intro h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .intro-text {
+    font-size: 16px;
+  }
+  
+  .funktionsweise-section h3,
+  .vorteile-section h3,
+  .partner-section h3 {
+    font-size: 1.75rem;
+  }
+  
+  .section-description,
+  .partner-description {
+    font-size: 16px;
+  }
+  
+  .phase-item {
+    padding: 25px 20px;
+  }
+  
+  .phase-number {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .vorteile-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .vorteil-card {
+    padding: 25px 20px;
+  }
+  
+  .cta-section h2 {
+    font-size: 2rem;
+  }
+  
+  .cta-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    padding: 25px 20px;
+    border-radius: 15px;
+  }
+  
+  .hero-title {
+    font-size: 1.75rem;
+    margin-bottom: 15px;
+  }
+  
+  .hero-subtitle {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .hero-features {
+    gap: 16px;
+    text-align: left;
+  }
+  
+  .feature-check {
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .hero-cta {
+    font-size: 14px;
+    padding: 14px 28px;
+  }
+  
+  .check {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+    margin-top: 1px;
+  }
+  
+  .feature-check span:last-child {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+  
+  .info-intro h2 {
+    font-size: 1.75rem;
+  }
+  
+  .intro-text {
+    font-size: 15px;
+  }
+  
+  .funktionsweise-section h3,
+  .vorteile-section h3,
+  .partner-section h3 {
+    font-size: 1.5rem;
+  }
+  
+  .phase-item {
+    padding: 20px 15px;
+  }
+  
+  .phase-number {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+  
+  .vorteil-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .vorteil-icon svg {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .partner-list {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .partner-item {
+    padding: 20px 15px;
+  }
+  
+  .partner-logo {
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+  }
+}
+
+/* Zusätzliche Verbesserung für sehr kleine Bildschirme */
+@media (max-width: 360px) {
+  .hero-content {
+    padding: 20px 15px;
+  }
+  
+  .feature-check span:last-child {
+    font-size: 14px;
+  }
+  
+  .check {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  
+}

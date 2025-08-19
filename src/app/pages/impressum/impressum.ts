@@ -14,7 +14,7 @@ export class ImpressumComponent implements OnInit {
   // Firmendaten
   companyData = {
     name: 'Deniz Tüzün',
-    title: 'Immobiliendarlehensvertreter und Darlehensvertreter',
+    title: 'Immobiliardarlehensvertreter und Darlehensvertreter',
     street: 'Neuenkamp 16',
     zipCode: '29229',
     city: 'Celle',
@@ -28,17 +28,17 @@ export class ImpressumComponent implements OnInit {
   // Aufsichtsbehörde und Registrierung
   regulatoryData = {
     // IHK / Gewerbeaufsicht
-    authority: 'IHK Lüneburg-Wolfsburg', // BITTE ANPASSEN
-    authorityAddress: 'Am Sande 1, 21335 Lüneburg', // BITTE ANPASSEN
-    authorityWebsite: 'https://www.ihk-lueneburg.de', // BITTE ANPASSEN
+    authority: 'Ombudsleute / Schlichtungsstelle', // BITTE ANPASSEN
+    authorityAddress: 'Glockengießerwall 2, 20095 Hamburg', // BITTE ANPASSEN
+    authorityWebsite: 'https://www.schlichtung-finanzberatung.de', // BITTE ANPASSEN
     
     // Erlaubnis nach § 34c/34i GewO
-    permitType: '§ 34c GewO (Immobiliendarlehensvermittler) und § 34i GewO (Finanzanlagenvermittler)',
+    permitType: '§ 34c GewO (Immobiliardarlehensvermittler) und § 34i GewO (Finanzanlagenvermittler)',
     permitNumber: 'XXXX-XXXX-XXXX', // BITTE EINTRAGEN
     
     // Vermittlerregister
     registerName: 'Vermittlerregister',
-    registerNumber: 'D-XXXX-XXXXX-XX', // BITTE EINTRAGEN
+    registerNumber: 'D-W-151-1HHR-44', // BITTE EINTRAGEN
     registerWebsite: 'https://www.vermittlerregister.info',
     
     // Berufskammer
@@ -47,15 +47,15 @@ export class ImpressumComponent implements OnInit {
 
   // Berufshaftpflichtversicherung
   insuranceData = {
-    company: '[Name der Versicherungsgesellschaft]', // BITTE EINTRAGEN
-    address: '[Adresse der Versicherung]', // BITTE EINTRAGEN
+    company: 'VHV Versicherungen', // BITTE EINTRAGEN
+    address: 'VHV-Platz 1, 30177 Hannover', // BITTE EINTRAGEN
     scope: 'Bundesrepublik Deutschland und EU',
     coverageAmount: 'gemäß gesetzlichen Vorgaben'
   };
 
   // Streitschlichtung
   disputeResolution = {
-    platform: 'https://ec.europa.eu/consumers/odr',
+    platform: 'https://www.schlichtung-finanzberatung.de/',
     willingToParticipate: false,
     email: 'info@baufi-tuezuen.de'
   };
@@ -73,7 +73,7 @@ export class ImpressumComponent implements OnInit {
     { id: 'kontakt', title: 'Kontakt', icon: '📞' },
     { id: 'aufsicht', title: 'Aufsichtsbehörde', icon: '🏛️' },
     { id: 'berufsrecht', title: 'Berufsrechtliche Regelungen', icon: '⚖️' },
-    { id: 'haftpflicht', title: 'Berufshaftpflichtversicherung', icon: '🛡️' },
+    { id: 'haftpflicht', title: 'BHV', icon: '🛡️' },
     { id: 'streitschlichtung', title: 'Streitschlichtung', icon: '🤝' },
     { id: 'haftung', title: 'Haftungsausschluss', icon: '⚠️' },
     { id: 'urheberrecht', title: 'Urheberrecht', icon: '©' }

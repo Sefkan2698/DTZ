@@ -189,6 +189,8 @@ export class ContactComponent {
     const labels: { [key: string]: string } = {
       'baufinanzierung': 'Baufinanzierung',
       'ratenkredit': 'Ratenkredit',
+      'bausparvertrag': 'Bausparvertrag',
+      'Tipp': 'Tipp',
       'anderes': 'Anderes'
     };
     return labels[value] || value;

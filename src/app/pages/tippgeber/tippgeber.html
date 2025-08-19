@@ -1,0 +1,203 @@
+<!-- Hero Section -->
+<section class="tippgeber-hero">
+  <div class="hero-background"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title">Tippgeber werden</h1>
+      <p class="hero-subtitle">
+        Empfehlen Sie uns weiter und erhalten Sie bis zu <strong>1.000€ Provision</strong> für erfolgreiche Vermittlungen.
+      </p>
+      <div class="hero-features">
+        <div class="feature-check">
+          <span class="check">✓</span>
+          <span>Bis zu 1.000€ Provision</span>
+        </div>
+        <div class="feature-check">
+          <span class="check">✓</span>
+          <span>Einfache Abwicklung</span>
+        </div>
+        <div class="feature-check">
+          <span class="check">✓</span>
+          <span>Für Kunden & Interessenten</span>
+        </div>
+      </div>
+      <button class="hero-cta" routerLink="/contact">
+        JETZT TIPP ABGEBEN
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Info Section -->
+<section class="info-section">
+  <div class="container">
+    <div class="info-content">
+      <h2>Werden Sie Teil unseres Empfehlungsnetzwerks</h2>
+      <p>
+        Sie kennen jemanden, der eine <strong>Baufinanzierung</strong>, ein <strong>Immobiliardarlehen</strong> oder einen 
+        <strong>Ratenkredit</strong> benötigt? Dann profitieren Sie von unserem attraktiven Tippgeber-Programm!
+      </p>
+      <p>
+        Als <strong>zufriedener Kunde</strong> möchten Sie unsere erstklassigen Leistungen an Freunde oder Bekannte weiterempfehlen? 
+        Wir schätzen Ihr Vertrauen sehr und honorieren Ihre Empfehlungen entsprechend. Auch wenn Sie noch <strong>kein Kunde</strong> 
+        bei uns sind - kein Problem! Wir belohnen erfolgreiche Tipps mit einer <strong>Provision von bis zu 1.000€</strong>.
+      </p>
+      <p>
+        Der Ablauf ist denkbar einfach: Füllen Sie unser Kontaktformular mit Ihren Daten und den Informationen zu Ihrer 
+        Empfehlung aus. Wir setzen uns umgehend mit Ihnen in Verbindung und erläutern das weitere Vorgehen. Alternativ 
+        können Sie Ihrer Empfehlung auch einfach mitteilen, dass sie durch Sie empfohlen wurde - wir vermerken dies in 
+        unserer Datenbank und informieren Sie nach Vertragsabschluss über Ihre Provision.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+  <div class="container">
+    <h2 class="faq-title">Häufig gestellte Fragen zum <strong>Tippgeber-Programm</strong></h2>
+    
+    <div class="faq-grid">
+      <!-- FAQ 1 -->
+      <div class="faq-item">
+        <button class="faq-question" (click)="toggleFAQ(1)">
+          <span>Wie gebe ich erfolgreich einen Tipp ab?</span>
+          <svg class="faq-icon" [class.rotated]="activeFAQ === 1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer" [class.active]="activeFAQ === 1">
+          <p>
+            Nutzen Sie unser Kontaktformular und teilen Sie uns Ihre Daten sowie einen Hinweis mit, 
+            dass Sie eine Empfehlung abgeben möchten. Alternativ kann Ihre Empfehlung bei der Kontaktaufnahme 
+            einfach erwähnen, dass sie durch Sie vermittelt wurde. Wir kümmern uns um den Rest!
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item">
+        <button class="faq-question" (click)="toggleFAQ(2)">
+          <span>Was passiert nach der Tipp-Abgabe?</span>
+          <svg class="faq-icon" [class.rotated]="activeFAQ === 2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer" [class.active]="activeFAQ === 2">
+          <p>
+            Nach Ihrer Tipp-Abgabe prüfen wir, ob der Interessent bereits bei uns bekannt ist. Ist Ihr Tipp berechtigt, 
+            wird er nicht berücksichtigt, wenn bereits ein Beratungsprozess läuft. Bei berechtigten Tipps kontaktieren 
+            wir den Interessenten und vereinbaren einen Beratungstermin. Nach erfolgreichem Vertragsabschluss erhalten 
+            Sie Ihre Tippgeber-Provision.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item">
+        <button class="faq-question" (click)="toggleFAQ(3)">
+          <span>Wie hoch ist die Provision?</span>
+          <svg class="faq-icon" [class.rotated]="activeFAQ === 3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer" [class.active]="activeFAQ === 3">
+          <p>
+            Die Provisionshöhe richtet sich nach der Art und dem Volumen des Darlehens. Da wir aus datenschutzrechtlichen 
+            Gründen keine konkreten Darlehenssummen nennen dürfen, werden diese Informationen als Spannen ausgewiesen:
+          </p>
+          <div class="provision-table">
+            <div class="provision-category">
+              <h4>Immobiliardarlehen</h4>
+              <ul>
+                <li>bis 249.999€ = 200€ Provision</li>
+                <li>250.000€ bis 499.999€ = 400€ Provision</li>
+                <li>500.000€ bis 749.999€ = 600€ Provision</li>
+                <li>750.000€ bis 999.999€ = 800€ Provision</li>
+                <li>ab 1 Mio€ = 1.000€ Provision</li>
+              </ul>
+            </div>
+            <div class="provision-category">
+              <h4>Konsumentendarlehen</h4>
+              <ul>
+                <li>10.000€ bis 29.999€ = 20€ Provision</li>
+                <li>30.000€ bis 49.999€ = 40€ Provision</li>
+                <li>ab 50.000€ = 60€ Provision</li>
+              </ul>
+            </div>
+            <div class="provision-category">
+              <h4>Immobilienvermittlung</h4>
+              <ul>
+                <li>Ausschließlich nach vorheriger Absprache</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item">
+        <button class="faq-question" (click)="toggleFAQ(4)">
+          <span>Wann wird die Provision fällig?</span>
+          <svg class="faq-icon" [class.rotated]="activeFAQ === 4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer" [class.active]="activeFAQ === 4">
+          <p>
+            Die Provision wird 14 Tage nach Vertragsunterzeichnung und erfolgter Darlehenszusage ausgezahlt. 
+            Sie erhalten von uns eine entsprechende Benachrichtigung über die Auszahlung.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item">
+        <button class="faq-question" (click)="toggleFAQ(5)">
+          <span>Können auch Makler und Versicherungsvermittler Tipps abgeben?</span>
+          <svg class="faq-icon" [class.rotated]="activeFAQ === 5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer" [class.active]="activeFAQ === 5">
+          <p>
+            Für gewerbliche Vermittler bieten wir ein zusätzliches, speziell angepasstes Provisionsmodell an. 
+            Melden Sie sich hierzu direkt bei unserem Ansprechpartner und wir besprechen die individuellen 
+            Konditionen für eine Zusammenarbeit.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ 6 -->
+      <div class="faq-item">
+        <button class="faq-question" (click)="toggleFAQ(6)">
+          <span>Gibt es eine Mindestablaufzeit oder Kündigungsfrist?</span>
+          <svg class="faq-icon" [class.rotated]="activeFAQ === 6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </button>
+        <div class="faq-answer" [class.active]="activeFAQ === 6">
+          <p>
+            Nein, es gibt keine Mindestablaufzeit oder Kündigungsfristen. Jeder Tipp wird einzeln bewertet und 
+            vergütet. Sie können jederzeit Empfehlungen abgeben oder das Programm pausieren - ganz wie es für 
+            Sie am besten passt.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Bereit für Ihren ersten Tipp?</h2>
+    <p>
+      Nutzen Sie unser Tippgeber-Programm und profitieren Sie von attraktiven Provisionen für erfolgreiche Empfehlungen.
+    </p>
+    <button class="cta-button" routerLink="/contact">
+      JETZT TIPP ABGEBEN
+    </button>
+  </div>
+</section>

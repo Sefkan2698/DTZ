@@ -10,7 +10,7 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrl: './baufinanzierung.css'
 })
 export class Baufinanzierung implements OnInit, OnDestroy {
-  numberOfBanks = 800;
+  numberOfBanks = 450;
   private jsonLdScript: HTMLScriptElement | undefined;
   
   faqs = [
@@ -53,7 +53,7 @@ export class Baufinanzierung implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Meta Tags für Baufinanzierung setzen
-    this.title.setTitle('Baufinanzierung Celle - Immobiliendarlehen | Deniz Tüzün Finanzberatung');
+    this.title.setTitle('Baufinanzierung Celle - Immobiliardarlehen | Deniz Tüzün Finanzberatung');
     
     this.meta.updateTag({ 
       name: 'description', 
@@ -62,7 +62,7 @@ export class Baufinanzierung implements OnInit, OnDestroy {
     
     this.meta.updateTag({ 
       name: 'keywords', 
-      content: 'Baufinanzierung, Immobiliendarlehen, Immobilienfinanzierung, Baukredit, Hausfinanzierung, Deniz Tüzün, Celle, Zinsbindung, Tilgung, Finanzierungsberatung' 
+      content: 'Baufinanzierung, Immobiliardarlehen, Immobilienfinanzierung, Baukredit, Hausfinanzierung, Deniz Tüzün, Celle, Zinsbindung, Tilgung, Finanzierungsberatung' 
     });
 
     this.meta.updateTag({ 
@@ -137,7 +137,7 @@ export class Baufinanzierung implements OnInit, OnDestroy {
           "@type": "Country",
           "name": "Deutschland"
         },
-        "serviceType": ["Baufinanzierung", "Immobiliendarlehen", "Anschlussfinanzierung", "Umschuldung"],
+        "serviceType": ["Baufinanzierung", "Immobiliardarlehen", "Anschlussfinanzierung", "Umschuldung"],
         "offers": {
           "@type": "Offer",
           "price": "0",

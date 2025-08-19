@@ -5,6 +5,8 @@ import { RatenkreditComponent } from './pages/ratenkredit/ratenkredit';
 import { ContactComponent } from './pages/contact/contact';
 import { DatenschutzComponent } from './pages/datenschutz/datenschutz';
 import { ImpressumComponent } from './pages/impressum/impressum';
+import { Bausparvertrag } from './pages/bausparvertrag/bausparvertrag';
+import { Tippgeber } from './pages/tippgeber/tippgeber';
 import { Component } from '@angular/core';
 
 export const routes: Routes = [
@@ -14,5 +16,7 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent},
   { path: 'datenschutz', component: DatenschutzComponent},
   { path: 'impressum', component: ImpressumComponent},
+  { path: 'tippgeber', component: Tippgeber},
+  { path: 'bausparvertrag', component: Bausparvertrag},
   // Weitere Routen hier...
 ];

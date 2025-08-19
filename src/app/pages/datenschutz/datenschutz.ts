@@ -17,7 +17,7 @@ export class DatenschutzComponent implements OnInit {
   // Kontaktdaten
   companyData = {
     name: 'Deniz Tüzün',
-    title: 'Immobiliendarlehensvertreter und Darlehensvertreter',
+    title: 'Immobiliardarlehensvertreter und Darlehensvertreter',
     street: 'Neuenkamp 16',
     zipCode: '29229',
     city: 'Celle',
