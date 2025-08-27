@@ -8,20 +8,32 @@
   background-color: #f5f5f5;
 }
 
-/* Hintergrundbild - HIER KÖNNEN SIE ZWISCHEN BILD UND GRADIENT WECHSELN */
-.hero-background {
+/* Optimiertes Hero-Bild als IMG */
+.hero-background-img {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  /* FÜR BILD: */
- background-image: url('/raten5.webp'); 
-  /* FÜR BLAUEN GRADIENT: */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  object-fit: cover;
+  object-position: center;
   z-index: 1;
+}
+
+/* Overlay für bessere Lesbarkeit */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: -100px;
+  bottom: 0;
+  width: 200px;
+  background: linear-gradient(
+    to right,
+    rgba(30, 64, 175, 0.9) 0%,
+    rgba(30, 64, 175, 0.6) 50%,
+    transparent 100%
+  );
+  z-index: 2;
 }
 
 /* Geometrisches Muster */
@@ -47,23 +59,6 @@
       rgba(255, 255, 255, 0.05) 70px
     );
   z-index: 0;
-}
-
-/* Weißer Overlay-Gradient für sanften Übergang */
-.hero-background::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100px;
-  bottom: 0;
-  width: 200px;
-  background: linear-gradient(
-    to right,
-    rgba(30, 64, 175, 0.9) 0%,
-    rgba(30, 64, 175, 0.6) 50%,
-    transparent 100%
-  );
-  z-index: 2;
 }
 
 .container {
@@ -125,12 +120,11 @@
 
 /* Mobile Responsive */
 @media (max-width: 968px) {
-  .hero-background {
-    width: 100%;
+  .hero-background-img {
     opacity: 0.8;
   }
   
-  .hero-background::before {
+  .hero-overlay {
     background: linear-gradient(
       to right,
       rgba(30, 64, 175, 0.8) 0%,

@@ -19,23 +19,20 @@
   overflow: hidden;
 }
 
-/* Hintergrundbild mit Overlay */
-.hero-background {
+/* Optimiertes Hero-Bild als IMG */
+.hero-background-img {
   position: absolute;
   top: 0;
-  right: 0;
-    width: 100%;
-    height: 100%;
-  background-image: url('/homebg.webp');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   z-index: 1;
 }
 
-/* Dunkler Overlay für bessere Lesbarkeit */
-.hero-background::after {
-  content: '';
+/* Overlay für bessere Lesbarkeit */
+.hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -47,6 +44,7 @@
     rgba(0, 0, 0, 0.6) 50%,
     rgba(0, 0, 0, 0.3) 100%
   );
+  z-index: 2;
 }
 
 .container {
@@ -54,7 +52,7 @@
   margin: 0 auto;
   padding: 0 24px;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 .hero-content {
