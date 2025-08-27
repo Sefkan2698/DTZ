@@ -10,7 +10,6 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrl: './homepage.css'
 })
 export class Homepage implements OnInit, OnDestroy {
-  numberOfBanks = 450; // Anzahl der Partnerbanken
   
   private jsonLdScript: HTMLScriptElement | undefined;
 
@@ -68,8 +67,8 @@ export class Homepage implements OnInit, OnDestroy {
       "alternateName": ["DTZ Finanzberatung", "Baufi Tüzün"],
       "description": "Unabhängige Finanzberatung für Baufinanzierung und Ratenkredite",
       "url": "https://www.baufi-tuezuen.de",
-      "logo": "https://www.baufi-tuezuen.de/assets/logo.png",
-      "image": "https://www.baufi-tuezuen.de/assets/office.jpg",
+      "logo": "https://www.baufi-tuezuen.de/assets/logo2.webp",
+      "image": "https://www.baufi-tuezuen.de/assets/homebg.webp",
       "telephone": "+49-152-52031092", 
       "email": "info@baufi-tuezuen.de", 
       "address": {
@@ -110,7 +109,7 @@ export class Homepage implements OnInit, OnDestroy {
             "itemOffered": {
               "@type": "Service",
               "name": "Baufinanzierung",
-              "description": `Maßgeschneiderte Baufinanzierung mit über ${this.numberOfBanks} Banken im Vergleich`
+              "description": `Maßgeschneiderte Baufinanzierung mit über 450 Banken im Vergleich`
             }
           },
           {

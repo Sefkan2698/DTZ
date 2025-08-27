@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
     this.meta.addTag({ property: 'og:type', content: 'website' });
     this.meta.addTag({ property: 'og:locale', content: 'de_DE' });
     this.meta.addTag({ property: 'og:site_name', content: 'Deniz Tüzün Finanzberatung' });
-    this.meta.addTag({ property: 'og:image', content: 'https://www.baufi-tuezuen.de/logo.png' });
+    this.meta.addTag({ property: 'og:image', content: 'https://www.baufi-tuezuen.de/logo2.webp' });
     
 
     
