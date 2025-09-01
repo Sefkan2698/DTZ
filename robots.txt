@@ -3,6 +3,5 @@ Allow: /
 Disallow: /api/
 Disallow: /admin/
 Sitemap: https://baufi-tuezuen.de/sitemap.xml
-Sitemap: https://www.baufi-tuezuen.de/sitemap.xml
 User-agent: Googlebot
 Crawl-delay: 0
