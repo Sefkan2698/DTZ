@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface CookieSettings {
@@ -21,19 +22,23 @@ export class CookieConsentService {
   private readonly CONSENT_KEY = 'cookie-consent';
   private readonly CONSENT_VERSION = '1.0';
   private consentSubject = new BehaviorSubject<CookieConsent | null>(null);
+  private platformId = inject(PLATFORM_ID);
   
   public consent$: Observable<CookieConsent | null> = this.consentSubject.asObservable();
 
   constructor() {
-    // Lade gespeicherten Consent beim Start
-    this.loadConsent();
-    
-    // Lausche auf Storage-Events (für Tabs-Synchronisation)
-    window.addEventListener('storage', (event) => {
-      if (event.key === this.CONSENT_KEY) {
-        this.loadConsent();
-      }
-    });
+    // Nur im Browser initialisieren
+    if (isPlatformBrowser(this.platformId)) {
+      // Lade gespeicherten Consent beim Start
+      this.loadConsent();
+      
+      // Lausche auf Storage-Events (für Tabs-Synchronisation)
+      window.addEventListener('storage', (event) => {
+        if (event.key === this.CONSENT_KEY) {
+          this.loadConsent();
+        }
+      });
+    }
   }
 
   /**
@@ -48,6 +53,10 @@ export class CookieConsentService {
    * Holt den gespeicherten Consent
    */
   getConsent(): CookieConsent | null {
+    if (!isPlatformBrowser(this.platformId)) {
+      return null; // Server-Side: kein localStorage verfügbar
+    }
+
     try {
       const consentString = localStorage.getItem(this.CONSENT_KEY);
       if (!consentString) {
@@ -73,6 +82,10 @@ export class CookieConsentService {
    * Speichert den Consent
    */
   setConsent(consent: Partial<CookieConsent>): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return; // Server-Side: kein localStorage verfügbar
+    }
+
     try {
       const fullConsent: CookieConsent = {
         settings: consent.settings || {
@@ -118,6 +131,10 @@ export class CookieConsentService {
    * Löscht den gespeicherten Consent
    */
   clearConsent(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return; // Server-Side: kein localStorage verfügbar
+    }
+    
     localStorage.removeItem(this.CONSENT_KEY);
     this.consentSubject.next(null);
   }
