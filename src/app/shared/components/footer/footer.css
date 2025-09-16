@@ -2,7 +2,7 @@
 .footer {
   background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
   color: #fff;
-  padding: 40px 20px 20px;
+  padding: 40px 20px 120px; /* Bottom-Padding von 20px auf 120px erhöht */
 }
 
 .container {
@@ -172,6 +172,10 @@
 
 /* Tablet Responsive */
 @media (max-width: 1024px) {
+  .footer {
+    padding: 30px 15px 140px; /* Bottom-Padding für Tablet erhöht */
+  }
+  
   .footer-content {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
@@ -181,7 +185,7 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .footer {
-    padding: 30px 15px 20px;
+    padding: 30px 15px 160px; /* Bottom-Padding für Mobile noch mehr erhöht */
   }
   
   .footer-content {
@@ -224,7 +228,11 @@
 }
 
 /* Sehr kleine Bildschirme */
-@media (max-width: 380px) {
+@media (max-width: 480px) {
+  .footer {
+    padding: 25px 12px 180px; /* Maximum Bottom-Padding für kleinste Bildschirme */
+  }
+  
   .footer-badges {
     flex-direction: column;
     align-items: flex-start;
@@ -243,5 +251,34 @@
   .link-icon,
   .footer-contact-item .icon {
     font-size: 13px;
+  }
+}
+
+/* Extra kleine Bildschirme */
+@media (max-width: 360px) {
+  .footer {
+    padding: 20px 10px 200px; /* Maximum Platz für sehr kleine Displays */
+  }
+  
+  .footer-content {
+    gap: 20px;
+  }
+  
+  .footer-section h4 {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  
+  .footer-links a,
+  .footer-contact-item {
+    font-size: 11px;
+  }
+  
+  .footer-bottom p {
+    font-size: 11px;
+  }
+  
+  .footer-disclaimer {
+    font-size: 8px !important;
   }
 }

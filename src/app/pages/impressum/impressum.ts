@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-impressum',
@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './impressum.html',
   styleUrls: ['./impressum.css']
 })
-export class ImpressumComponent implements OnInit {
+export class ImpressumComponent implements OnInit, OnDestroy {
   
   // Firmendaten
   companyData = {
@@ -22,33 +22,26 @@ export class ImpressumComponent implements OnInit {
     phone: '+49 152 52031092',
     email: 'info@baufi-tuezuen.de',
     website: 'https://www.baufi-tuezuen.de',
-    taxId: '17/144/0778', // Steuernummer
+    taxId: '17/144/0778'
   };
 
   // Aufsichtsbehörde und Registrierung
   regulatoryData = {
-    // IHK / Gewerbeaufsicht
-    authority: 'Ombudsleute / Schlichtungsstelle', // BITTE ANPASSEN
-    authorityAddress: 'Glockengießerwall 2, 20095 Hamburg', // BITTE ANPASSEN
-    authorityWebsite: 'https://www.schlichtung-finanzberatung.de', // BITTE ANPASSEN
-    
-    // Erlaubnis nach § 34c/34i GewO
+    authority: 'Ombudsleute / Schlichtungsstelle',
+    authorityAddress: 'Glockengießerwall 2, 20095 Hamburg',
+    authorityWebsite: 'https://www.schlichtung-finanzberatung.de',
     permitType: '§ 34c GewO (Immobiliardarlehensvermittler) und § 34i GewO (Finanzanlagenvermittler)',
-    permitNumber: 'XXXX-XXXX-XXXX', // BITTE EINTRAGEN
-    
-    // Vermittlerregister
+    permitNumber: 'XXXX-XXXX-XXXX',
     registerName: 'Vermittlerregister',
-    registerNumber: 'D-W-151-1HHR-44', // BITTE EINTRAGEN
+    registerNumber: 'D-W-151-1HHR-44',
     registerWebsite: 'https://www.vermittlerregister.info',
-    
-    // Berufskammer
     chamber: 'Industrie- und Handelskammer'
   };
 
   // Berufshaftpflichtversicherung
   insuranceData = {
-    company: 'VHV Versicherungen', // BITTE EINTRAGEN
-    address: 'VHV-Platz 1, 30177 Hannover', // BITTE EINTRAGEN
+    company: 'VHV Versicherungen',
+    address: 'VHV-Platz 1, 30177 Hannover',
     scope: 'Bundesrepublik Deutschland und EU',
     coverageAmount: 'gemäß gesetzlichen Vorgaben'
   };
@@ -58,13 +51,6 @@ export class ImpressumComponent implements OnInit {
     platform: 'https://www.schlichtung-finanzberatung.de/',
     willingToParticipate: false,
     email: 'info@baufi-tuezuen.de'
-  };
-
-  // Social Media (falls vorhanden)
-  socialMedia = {
-    facebook: '',
-    linkedin: '',
-    xing: ''
   };
 
   // Sections für Navigation
@@ -85,12 +71,11 @@ export class ImpressumComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.handleScroll();
-    window.addEventListener('scroll', () => this.handleScroll());
+    // Initialization
   }
 
   ngOnDestroy(): void {
-    window.removeEventListener('scroll', () => this.handleScroll());
+    // Cleanup
   }
 
   // Scroll zu Section
@@ -98,34 +83,15 @@ export class ImpressumComponent implements OnInit {
     const element = document.getElementById(sectionId);
     if (element) {
       const offset = 100;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - offset;
 
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
       });
-    }
-  }
-
-  // Handle Scroll für aktive Section
-  private handleScroll(): void {
-    const scrollPosition = window.pageYOffset + 150;
-    
-    for (const section of this.sections) {
-      const element = document.getElementById(section.id);
-      if (element) {
-        const { top, bottom } = element.getBoundingClientRect();
-        const elementTop = top + window.pageYOffset;
-        const elementBottom = bottom + window.pageYOffset;
-        
-        if (scrollPosition >= elementTop && scrollPosition <= elementBottom) {
-          this.activeSection = section.id;
-          break;
-        }
-      }
+      
+      this.activeSection = sectionId;
     }
   }
 
@@ -139,30 +105,109 @@ export class ImpressumComponent implements OnInit {
 
   // E-Mail kopieren
   copyEmail(): void {
-    navigator.clipboard.writeText(this.companyData.email).then(() => {
-      // Optional: Feedback anzeigen
-      const button = document.querySelector('.copy-btn');
-      if (button) {
-        button.textContent = 'Kopiert!';
-        setTimeout(() => {
-          button.textContent = 'E-Mail kopieren';
-        }, 2000);
-      }
-    });
+    this.copyToClipboard(this.companyData.email, 'E-Mail kopiert!');
   }
 
   // Telefonnummer kopieren
   copyPhone(): void {
-    navigator.clipboard.writeText(this.companyData.phone).then(() => {
-      // Optional: Feedback anzeigen
-      const button = document.querySelector('.copy-phone-btn');
-      if (button) {
-        button.textContent = 'Kopiert!';
-        setTimeout(() => {
-          button.textContent = 'Nummer kopieren';
-        }, 2000);
+    this.copyToClipboard(this.companyData.phone, 'Telefonnummer kopiert!');
+  }
+
+  // Universelle Copy-Funktion
+  private copyToClipboard(text: string, message: string): void {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(() => {
+        this.showNotification(message);
+      }).catch(() => {
+        this.fallbackCopy(text, message);
+      });
+    } else {
+      this.fallbackCopy(text, message);
+    }
+  }
+
+  // Fallback Copy-Methode
+  private fallbackCopy(text: string, message: string): void {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    
+    try {
+      const successful = document.execCommand('copy');
+      if (successful) {
+        this.showNotification(message);
+      } else {
+        alert('Kopieren fehlgeschlagen. Text: ' + text);
       }
-    });
+    } catch (err) {
+      alert('Kopieren fehlgeschlagen. Bitte manuell kopieren: ' + text);
+    } finally {
+      document.body.removeChild(textArea);
+    }
+  }
+
+  // Notification anzeigen
+  private showNotification(message: string): void {
+    const notification = document.createElement('div');
+    notification.textContent = message;
+    notification.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #10b981;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 10000;
+      font-weight: 600;
+      font-size: 14px;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 3000);
+  }
+
+  // vCard Download
+  downloadVCard(): void {
+    const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:${this.companyData.name}
+ORG:${this.companyData.name} Darlehensvermittlung
+TITLE:${this.companyData.title}
+TEL:${this.companyData.phone}
+EMAIL:${this.companyData.email}
+ADR:;;${this.companyData.street};${this.companyData.city};;${this.companyData.zipCode};${this.companyData.country}
+URL:${this.companyData.website}
+END:VCARD`;
+
+    try {
+      const blob = new Blob([vcard], { type: 'text/vcard' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      
+      link.href = url;
+      link.download = 'deniz-tuezuen.vcf';
+      link.style.display = 'none';
+      
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      URL.revokeObjectURL(url);
+      this.showNotification('vCard wurde heruntergeladen!');
+    } catch (error) {
+      alert('vCard Download fehlgeschlagen. Bitte versuchen Sie es erneut.');
+    }
   }
 
   // Drucken
@@ -170,25 +215,33 @@ export class ImpressumComponent implements OnInit {
     window.print();
   }
 
-  // vCard Download (Kontakt speichern)
-  downloadVCard(): void {
-    const vcard = `BEGIN:VCARD
-VERSION:3.0
-FN:${this.companyData.name}
-ORG:Baufi Tüzün
-TITLE:${this.companyData.title}
-TEL;TYPE=WORK:${this.companyData.phone}
-EMAIL:${this.companyData.email}
-ADR;TYPE=WORK:;;${this.companyData.street};${this.companyData.city};;${this.companyData.zipCode};${this.companyData.country}
-URL:${this.companyData.website}
-END:VCARD`;
+  // Scroll Event Handler
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    // Scroll to top button visibility
+    const scrollBtn = document.querySelector('.scroll-top-btn') as HTMLElement;
+    if (scrollBtn) {
+      if (window.scrollY > 300) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    }
 
-    const blob = new Blob([vcard], { type: 'text/vcard' });
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'deniz-tuezuen.vcf';
-    link.click();
-    window.URL.revokeObjectURL(url);
+    // Update active section
+    const scrollPosition = window.pageYOffset + 150;
+    
+    for (const section of this.sections) {
+      const element = document.getElementById(section.id);
+      if (element) {
+        const elementTop = element.offsetTop;
+        const elementBottom = elementTop + element.offsetHeight;
+        
+        if (scrollPosition >= elementTop && scrollPosition <= elementBottom) {
+          this.activeSection = section.id;
+          break;
+        }
+      }
+    }
   }
 }

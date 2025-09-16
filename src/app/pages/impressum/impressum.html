@@ -1,473 +1,401 @@
 <!-- Hero Section -->
-<section class="impressum-hero">
-  <div class="hero-background"></div>
+<section class="hero">
   <div class="container">
     <div class="hero-content">
-      <div class="hero-text-box">
-        <h1 class="hero-title">Impressum</h1>
-        <p class="hero-subtitle">
-          Rechtliche Informationen und Kontaktdaten
-        </p>
-      </div>
+      <h1 class="hero-title">Impressum</h1>
+      <p class="hero-subtitle">Rechtliche Informationen und Kontaktdaten</p>
     </div>
   </div>
 </section>
 
 <!-- Main Content -->
-<section class="impressum-content">
+<main class="main-content">
   <div class="container">
-    <div class="content-wrapper">
-      
-      <!-- Quick Navigation Cards -->
-      <div class="quick-nav">
-        <div class="nav-card" *ngFor="let section of sections" 
-             (click)="scrollToSection(section.id)"
-             [class.active]="activeSection === section.id">
+    
+    <!-- Quick Navigation -->
+    <nav class="quick-nav" aria-label="Schnellnavigation">
+      <div class="nav-grid">
+        <a *ngFor="let section of sections" 
+           [href]="'#' + section.id" 
+           class="nav-item" 
+           [class.active]="activeSection === section.id"
+           (click)="scrollToSection(section.id); $event.preventDefault()">
           <span class="nav-icon">{{ section.icon }}</span>
-          <span class="nav-title">{{ section.title }}</span>
-        </div>
+          <span class="nav-text">{{ section.title }}</span>
+        </a>
       </div>
+    </nav>
 
-      <!-- Main Content -->
-      <article class="impressum-article">
+    <!-- Content Sections -->
+    <article class="content">
+      
+      <!-- Angaben gemäß § 5 TMG -->
+      <section id="angaben" class="section">
+        <div class="section-header">
+          <h2>Angaben gemäß § 5 TMG</h2>
+        </div>
         
-        <!-- Section 1: Angaben gemäß § 5 TMG -->
-        <section id="angaben" class="content-section">
-          <div class="section-header">
-            <h2>Angaben gemäß § 5 TMG</h2>
-          </div>
-          
-          <div class="info-grid">
-            <div class="info-card main-card">
-              <div class="card-header">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-                <h3>Unternehmer</h3>
-              </div>
-              <div class="card-content">
-                <h4>{{ companyData.name }}</h4>
-                <p class="title">{{ companyData.title }}</p>
-                <div class="divider"></div>
-                <address>
-                  {{ companyData.street }}<br>
-                  {{ companyData.zipCode }} {{ companyData.city }}<br>
-                  {{ companyData.country }}
-                </address>
-              </div>
-            </div>
-
-            <div class="info-card">
-              <div class="card-header">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                </svg>
-              </div>
-              <div class="card-content">
-                <h4>Steuernummer</h4>
-                <p class="mono">{{ companyData.taxId }}</p>
-              </div>
-            </div>
-
-            <div class="info-card">
-              <div class="card-header">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
-                  <line x1="9" y1="9" x2="9.01" y2="9"></line>
-                  <line x1="15" y1="9" x2="15.01" y2="9"></line>
-                </svg>
-              </div>
-              <div class="card-content">
-                <h4>Rechtsform</h4>
-                <p>Einzelunternehmer</p>
-              </div>
+        <div class="cards-grid">
+          <div class="card card-primary">
+            <div class="card-icon">👤</div>
+            <div class="card-content">
+              <h3>Unternehmer</h3>
+              <h4>{{ companyData.name }}</h4>
+              <p class="subtitle">{{ companyData.title }}</p>
+              <div class="divider"></div>
+              <address>
+                {{ companyData.street }}<br>
+                {{ companyData.zipCode }} {{ companyData.city }}<br>
+                {{ companyData.country }}
+              </address>
             </div>
           </div>
-        </section>
 
-        <!-- Section 2: Kontakt -->
-        <section id="kontakt" class="content-section">
-          <div class="section-header">
-            <h2>Kontakt</h2>
-          </div>
-          
-          <div class="contact-grid">
-            <div class="contact-card">
-              <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                </svg>
-              </div>
-              <div class="contact-content">
-                <h3>Telefon</h3>
-                <p><a href="tel:{{ companyData.phone }}">{{ companyData.phone }}</a></p>
-                <button class="copy-phone-btn action-btn" (click)="copyPhone()">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
-                  Nummer kopieren
-                </button>
-              </div>
-            </div>
-
-            <div class="contact-card">
-              <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                  <path d="m22 7-10 5L2 7"></path>
-                </svg>
-              </div>
-              <div class="contact-content">
-                <h3>E-Mail</h3>
-                <p><a href="mailto:{{ companyData.email }}">{{ companyData.email }}</a></p>
-                <button class="copy-btn action-btn" (click)="copyEmail()">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                  </svg>
-                  E-Mail kopieren
-                </button>
-              </div>
-            </div>
-
-            <div class="contact-card">
-              <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <path d="M2 12h20"></path>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
-              </div>
-              <div class="contact-content">
-                <h3>Website</h3>
-                <p><a href="{{ companyData.website }}" target="_blank">www.baufi-tuezuen.de</a></p>
-              </div>
-            </div>
-
-            <div class="contact-card full-width">
-              <div class="contact-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-              </div>
-              <div class="contact-content">
-                <h3>Geschäftsadresse</h3>
-                <address>
-                  {{ companyData.street }}<br>
-                  {{ companyData.zipCode }} {{ companyData.city }}<br>
-                  {{ companyData.country }}
-                </address>
-                <button class="vcard-btn action-btn" (click)="downloadVCard()">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                  </svg>
-                  Kontakt speichern (vCard)
-                </button>
-              </div>
+          <div class="card">
+            <div class="card-icon">🧾</div>
+            <div class="card-content">
+              <h3>Steuernummer</h3>
+              <p class="mono">{{ companyData.taxId }}</p>
             </div>
           </div>
-        </section>
 
-        <!-- Section 3: Aufsichtsbehörde -->
-        <section id="aufsicht" class="content-section">
-          <div class="section-header">
-            <h2>Aufsichtsbehörde</h2>
+          <div class="card">
+            <div class="card-icon">🏢</div>
+            <div class="card-content">
+              <h3>Rechtsform</h3>
+              <p>Einzelunternehmer</p>
+            </div>
           </div>
-          
-          <div class="authority-card">
-            <h3>Zuständige Aufsichtsbehörde</h3>
-            <div class="authority-content">
+        </div>
+      </section>
+
+      <!-- Kontakt -->
+      <section id="kontakt" class="section">
+        <div class="section-header">
+          <h2>Kontakt</h2>
+        </div>
+        
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon phone">📱</div>
+            <div class="contact-content">
+              <h3>Telefon</h3>
+              <p><a [href]="'tel:' + companyData.phone">{{ companyData.phone }}</a></p>
+              <button class="btn btn-secondary" (click)="copyPhone()">
+                📋 Nummer kopieren
+              </button>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon email">📧</div>
+            <div class="contact-content">
+              <h3>E-Mail</h3>
+              <p><a [href]="'mailto:' + companyData.email">{{ companyData.email }}</a></p>
+              <button class="btn btn-secondary" (click)="copyEmail()">
+                📋 E-Mail kopieren
+              </button>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon web">🌐</div>
+            <div class="contact-content">
+              <h3>Website</h3>
+              <p><a [href]="companyData.website" target="_blank" rel="noopener">www.baufi-tuezuen.de</a></p>
+            </div>
+          </div>
+
+          <div class="contact-card full-width">
+            <div class="contact-icon location">📍</div>
+            <div class="contact-content">
+              <h3>Geschäftsadresse</h3>
+              <address>
+                {{ companyData.street }}<br>
+                {{ companyData.zipCode }} {{ companyData.city }}<br>
+                {{ companyData.country }}
+              </address>
+              <button class="btn btn-secondary" (click)="downloadVCard()">
+                💾 Kontakt als vCard speichern
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Aufsichtsbehörde -->
+      <section id="aufsicht" class="section">
+        <div class="section-header">
+          <h2>Aufsichtsbehörde</h2>
+        </div>
+        
+        <div class="info-card">
+          <h3>Zuständige Aufsichtsbehörde</h3>
+          <div class="info-content">
+            <p>
+              <strong>{{ regulatoryData.authority }}</strong><br>
+              {{ regulatoryData.authorityAddress }}<br>
+              <a [href]="regulatoryData.authorityWebsite" target="_blank" rel="noopener">
+                {{ regulatoryData.authorityWebsite }}
+              </a>
+            </p>
+          </div>
+
+          <div class="register-info">
+            <h4>Eintragung im Vermittlerregister</h4>
+            <p>
+              Registernummer: <strong>{{ regulatoryData.registerNumber }}</strong><br>
+              Registerstelle: {{ regulatoryData.registerName }}<br>
+              <a [href]="regulatoryData.registerWebsite" target="_blank" rel="noopener">
+                {{ regulatoryData.registerWebsite }}
+              </a>
+            </p>
+            <div class="notice">
               <p>
-                <strong>{{ regulatoryData.authority }}</strong><br>
-                {{ regulatoryData.authorityAddress }}<br>
-                <a href="{{ regulatoryData.authorityWebsite }}" target="_blank" rel="noopener">
-                  {{ regulatoryData.authorityWebsite }}
-                </a>
+                Die Eintragung kann bei der zuständigen {{ regulatoryData.chamber }} überprüft werden.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div class="register-info">
-              <h4>Eintragung im Vermittlerregister</h4>
-              <p>
-                Registernummer: <strong>{{ regulatoryData.registerNumber }}</strong><br>
-                Registerstelle: {{ regulatoryData.registerName }}<br>
-                <a href="{{ regulatoryData.registerWebsite }}" target="_blank" rel="noopener">
-                  {{ regulatoryData.registerWebsite }}
+      <!-- Berufsrechtliche Regelungen -->
+      <section id="berufsrecht" class="section">
+        <div class="section-header">
+          <h2>Berufsrechtliche Regelungen</h2>
+        </div>
+        
+        <div class="info-card">
+          <p class="lead">
+            Die Tätigkeit als Immobiliardarlehensvertreter und Finanzanlagenvermittler unterliegt 
+            folgenden berufsrechtlichen Regelungen:
+          </p>
+          
+          <div class="regulation-list">
+            <div class="regulation-item">
+              <div class="regulation-icon">📜</div>
+              <div class="regulation-content">
+                <h4>Gewerbeordnung (GewO)</h4>
+                <p>§ 34c GewO - Immobiliardarlehensvermittlung<br>
+                   § 34i GewO - Finanzanlagenvermittlung</p>
+                <a href="https://www.gesetze-im-internet.de/gewo/" target="_blank" rel="noopener">
+                  gesetze-im-internet.de/gewo
                 </a>
-              </p>
-              <div class="info-box">
-                <p>
-                  Die Eintragung kann bei der zuständigen {{ regulatoryData.chamber }} überprüft werden.
-                </p>
+              </div>
+            </div>
+
+            <div class="regulation-item">
+              <div class="regulation-icon">📋</div>
+              <div class="regulation-content">
+                <h4>Immobiliardarlehensvermittlungsverordnung</h4>
+                <p>Verordnung über die Immobiliardarlehensvermittlung</p>
+                <a href="https://www.gesetze-im-internet.de/immvermv/" target="_blank" rel="noopener">
+                  gesetze-im-internet.de/immvermv
+                </a>
+              </div>
+            </div>
+
+            <div class="regulation-item">
+              <div class="regulation-icon">🏛️</div>
+              <div class="regulation-content">
+                <h4>Finanzanlagenvermittlungsverordnung</h4>
+                <p>Verordnung über die Finanzanlagenvermittlung</p>
+                <a href="https://www.gesetze-im-internet.de/finvermv/" target="_blank" rel="noopener">
+                  gesetze-im-internet.de/finvermv
+                </a>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Section 4: Berufsrechtliche Regelungen -->
-        <section id="berufsrecht" class="content-section">
-          <div class="section-header">
-            <h2>Berufsrechtliche Regelungen</h2>
-          </div>
-          
-          <div class="regulations-card">
+      <!-- Berufshaftpflichtversicherung -->
+      <section id="haftpflicht" class="section">
+        <div class="section-header">
+          <h2>Berufshaftpflichtversicherung</h2>
+        </div>
+        
+        <div class="insurance-card">
+          <div class="insurance-icon">🛡️</div>
+          <div class="insurance-content">
+            <h3>Vermögensschadenhaftpflichtversicherung</h3>
             <p class="lead">
-              Die Tätigkeit als Immobiliardarlehensvertreter und Finanzanlagenvermittler unterliegt 
-              folgenden berufsrechtlichen Regelungen:
+              Wir verfügen über eine Berufshaftpflichtversicherung gemäß den gesetzlichen Vorgaben.
             </p>
             
-            <div class="regulation-list">
-              <div class="regulation-item">
-                <div class="regulation-icon">📜</div>
-                <div class="regulation-content">
-                  <h4>Gewerbeordnung (GewO)</h4>
-                  <p>§ 34c GewO - Immobiliardarlehensvermittlung<br>
-                     § 34i GewO - Finanzanlagenvermittlung</p>
-                  <a href="https://www.gesetze-im-internet.de/gewo/" target="_blank" rel="noopener">
-                    www.gesetze-im-internet.de/gewo
-                  </a>
-                </div>
+            <div class="insurance-details">
+              <div class="detail-item">
+                <strong>Versicherungsgesellschaft:</strong>
+                <p>{{ insuranceData.company }}</p>
               </div>
-
-              <div class="regulation-item">
-                <div class="regulation-icon">📋</div>
-                <div class="regulation-content">
-                  <h4>Immobiliardarlehensvermittlungsverordnung (ImmVermV)</h4>
-                  <p>Verordnung über die Immobiliardarlehensvermittlung</p>
-                  <a href="https://www.gesetze-im-internet.de/immvermv/" target="_blank" rel="noopener">
-                    www.gesetze-im-internet.de/immvermv
-                  </a>
-                </div>
+              <div class="detail-item">
+                <strong>Anschrift:</strong>
+                <p>{{ insuranceData.address }}</p>
               </div>
-
-              <div class="regulation-item">
-                <div class="regulation-icon">🏛️</div>
-                <div class="regulation-content">
-                  <h4>Finanzanlagenvermittlungsverordnung (FinVermV)</h4>
-                  <p>Verordnung über die Finanzanlagenvermittlung</p>
-                  <a href="https://www.gesetze-im-internet.de/finvermv/" target="_blank" rel="noopener">
-                    www.gesetze-im-internet.de/finvermv
-                  </a>
-                </div>
+              <div class="detail-item">
+                <strong>Räumlicher Geltungsbereich:</strong>
+                <p>{{ insuranceData.scope }}</p>
+              </div>
+              <div class="detail-item">
+                <strong>Deckungssumme:</strong>
+                <p>{{ insuranceData.coverageAmount }}</p>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Section 5: Berufshaftpflichtversicherung -->
-        <section id="haftpflicht" class="content-section">
-          <div class="section-header">
-            <h2>Berufshafpflichtversicherung</h2>
-          </div>
+      <!-- Streitschlichtung -->
+      <section id="streitschlichtung" class="section">
+        <div class="section-header">
+          <h2>Streitschlichtung</h2>
+        </div>
+        
+        <div class="info-card">
+          <h3>Verbraucherstreitbeilegung /<br>Universalschlichtungsstelle</h3>
           
-          <div class="insurance-card">
-            <div class="insurance-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                <path d="M9 12l2 2 4-4"></path>
-              </svg>
-            </div>
-            
-            <div class="insurance-content">
-              <h3>Vermögensschadenhaftpflichtversicherung</h3>
-              <p class="insurance-lead">
-                Wir verfügen über eine Berufshaftpflichtversicherung gemäß den gesetzlichen Vorgaben.
-              </p>
-              
-              <div class="insurance-details">
-                <div class="detail-item">
-                  <strong>Versicherungsgesellschaft:</strong>
-                  <p>{{ insuranceData.company }}</p>
-                </div>
-                <div class="detail-item">
-                  <strong>Anschrift:</strong>
-                  <p>{{ insuranceData.address }}</p>
-                </div>
-                <div class="detail-item">
-                  <strong>Räumlicher Geltungsbereich:</strong>
-                  <p>{{ insuranceData.scope }}</p>
-                </div>
-                <div class="detail-item">
-                  <strong>Deckungssumme:</strong>
-                  <p>{{ insuranceData.coverageAmount }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section 6: Streitschlichtung -->
-        <section id="streitschlichtung" class="content-section">
-          <div class="section-header">
-            <h2>Streitschlichtung</h2>
-          </div>
-          
-          <div class="dispute-card">
-            <h3>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h3>
-            
-            <div class="dispute-content">
-              <div class="platform-info">
-                <h4>Online-Streitbeilegung gemäß Art. 14 Abs. 1 ODR-VO</h4>
-                <a href="{{ disputeResolution.platform }}" target="_blank" rel="noopener" class="platform-link">
-                  {{ disputeResolution.platform }}
-                </a>
-                <p class="email-info">
-                  Unsere E-Mail-Adresse finden Sie oben im Impressum.
-                </p>
-              </div>
-
-              <div class="participation-info">
-                <h4>Teilnahme an Verbraucherstreitbeilegungsverfahren</h4>
-                <div class="info-box" *ngIf="!disputeResolution.willingToParticipate">
-                  <p>
-                    Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer 
-                    Verbraucherschlichtungsstelle teilzunehmen.
-                  </p>
-                </div>
-                <div class="info-box success" *ngIf="disputeResolution.willingToParticipate">
-                  <p>
-                    Wir sind bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle 
-                    teilzunehmen.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section 7: Haftungsausschluss -->
-        <section id="haftung" class="content-section">
-          <div class="section-header">
-            <h2>Haftungsausschluss (Disclaimer)</h2>
-          </div>
-          
-          <div class="disclaimer-card">
-            <div class="disclaimer-section">
-              <h3>Haftung für Inhalte</h3>
-              <p>
-                Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten 
-                nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als 
-                Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde 
-                Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige 
-                Tätigkeit hinweisen.
-              </p>
-              <p>
-                Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den 
-                allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch 
-                erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei 
-                Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend 
-                entfernen.
+          <div class="dispute-content">
+            <div class="platform-info">
+              <h4>Online-Streitbeilegung gemäß Art. 14 Abs. 1 ODR-VO</h4>
+              <a [href]="disputeResolution.platform" target="_blank" rel="noopener" class="platform-link">
+                {{ disputeResolution.platform }}
+              </a>
+              <p class="small-text">
+                Unsere E-Mail-Adresse finden Sie oben im Impressum.
               </p>
             </div>
 
-            <div class="disclaimer-section">
-              <h3>Haftung für Links</h3>
-              <p>
-                Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen 
-                Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. 
-                Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der 
-                Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf 
-                mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der 
-                Verlinkung nicht erkennbar.
-              </p>
-              <p>
-                Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete 
-                Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen 
-                werden wir derartige Links umgehend entfernen.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <!-- Section 8: Urheberrecht -->
-        <section id="urheberrecht" class="content-section">
-          <div class="section-header">
-            <h2>Urheberrecht</h2>
-          </div>
-          
-          <div class="copyright-card">
-            <div class="copyright-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M15 9.354a4 4 0 1 0 0 5.292"></path>
-              </svg>
-            </div>
-            
-            <div class="copyright-content">
-              <p>
-                Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen 
-                dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art 
-                der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen 
-                Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind 
-                nur für den privaten, nicht kommerziellen Gebrauch gestattet.
-              </p>
-              <p>
-                Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die 
-                Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche 
-                gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, 
-                bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen 
-                werden wir derartige Inhalte umgehend entfernen.
-              </p>
-              
-              <div class="copyright-footer">
-                <p class="copyright-text">
-                  © {{ currentYear }} {{ companyData.name }}. Alle Rechte vorbehalten.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Zusätzliche Informationen -->
-        <section class="content-section">
-          <div class="additional-info">
-            <h2>Weitere Informationen</h2>
-            
-            <div class="info-grid-small">
-              <div class="small-card">
-                <h3>Datenschutz</h3>
+            <div class="participation-info">
+              <h4>Teilnahme an Verbraucherstreitbeilegungsverfahren</h4>
+              <div class="notice warning" *ngIf="!disputeResolution.willingToParticipate">
                 <p>
-                  Informationen zum Datenschutz finden Sie in unserer 
-                  <a routerLink="/datenschutz">Datenschutzerklärung</a>.
+                  Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer 
+                  Verbraucherschlichtungsstelle teilzunehmen.
                 </p>
               </div>
-              
-              <div class="small-card">
-                <h3>Kontaktformular</h3>
+              <div class="notice success" *ngIf="disputeResolution.willingToParticipate">
                 <p>
-                  Sie können uns auch über unser 
-                  <a routerLink="/contact">Kontaktformular</a> erreichen.
+                  Wir sind bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle 
+                  teilzunehmen.
                 </p>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-      </article>
-    </div>
+      <!-- Haftungsausschluss -->
+      <section id="haftung" class="section">
+        <div class="section-header">
+          <h2>Haftungsausschluss (Disclaimer)</h2>
+        </div>
+        
+        <div class="disclaimer-card">
+          <div class="disclaimer-section">
+            <h3>Haftung für Inhalte</h3>
+            <p>
+              Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten 
+              nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als 
+              Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde 
+              Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige 
+              Tätigkeit hinweisen.
+            </p>
+            <p>
+              Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den 
+              allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch 
+              erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei 
+              Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend 
+              entfernen.
+            </p>
+          </div>
+
+          <div class="disclaimer-section">
+            <h3>Haftung für Links</h3>
+            <p>
+              Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen 
+              Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. 
+              Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der 
+              Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf 
+              mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der 
+              Verlinkung nicht erkennbar.
+            </p>
+            <p>
+              Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete 
+              Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen 
+              werden wir derartige Links umgehend entfernen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Urheberrecht -->
+      <section id="urheberrecht" class="section">
+        <div class="section-header">
+          <h2>Urheberrecht</h2>
+        </div>
+        
+        <div class="copyright-card">
+          <div class="copyright-icon">©</div>
+          <div class="copyright-content">
+            <p>
+              Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen 
+              dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art 
+              der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen 
+              Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind 
+              nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+            </p>
+            <p>
+              Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die 
+              Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche 
+              gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, 
+              bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen 
+              werden wir derartige Inhalte umgehend entfernen.
+            </p>
+            
+            <div class="copyright-footer">
+              <p class="copyright-text">
+                © {{ currentYear }} {{ companyData.name }}. Alle Rechte vorbehalten.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Weitere Informationen -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Weitere Informationen</h2>
+        </div>
+        
+        <div class="info-grid">
+          <div class="info-item">
+            <h3>Datenschutz</h3>
+            <p>
+              Informationen zum Datenschutz finden Sie in unserer 
+              <a routerLink="/datenschutz">Datenschutzerklärung</a>.
+            </p>
+          </div>
+          
+          <div class="info-item">
+            <h3>Kontaktformular</h3>
+            <p>
+              Sie können uns auch über unser 
+              <a routerLink="/contact">Kontaktformular</a> erreichen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Druckbutton am Ende -->
+      <section class="print-section">
+        <div class="print-container">
+          <button class="btn-print-final" (click)="printDocument()">
+            🖨️ Impressum drucken
+          </button>
+          <p class="print-note">Speichern oder drucken Sie diese Seite für Ihre Unterlagen</p>
+        </div>
+      </section>
+
+    </article>
   </div>
-</section>
-
-<!-- Action Buttons -->
-<div class="floating-actions">
-  <button class="fab-btn print-btn" (click)="printDocument()" title="Seite drucken">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <polyline points="6 9 6 2 18 2 18 9"></polyline>
-      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-      <rect x="6" y="14" width="12" height="8"></rect>
-    </svg>
-  </button>
-  
-  <button class="fab-btn scroll-top-btn" (click)="scrollToTop()" [class.visible]="activeSection !== ''" title="Nach oben">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <polyline points="18 15 12 9 6 15"></polyline>
-    </svg>
-  </button>
-</div>
+</main>
